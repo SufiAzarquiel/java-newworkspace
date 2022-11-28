@@ -1,0 +1,79 @@
+{
+	// Place your MyJavaWorkspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Prog exercise template": {
+		"scope": "java",
+		"prefix": "suficlass",
+		"body": [
+			"import java.util.Scanner;",
+			"",
+			"public class bucles${1:n} {",
+			"    /*",
+			"     * Ejercicio ${1:n}: Descripcion",
+			"     */",
+			"",
+			"    // Método que hace la tarea que pide el ejercicio.",
+			"    public static int ${2:funcion}(String input) {",
+			"        // Variables",
+			"        int num = 0; // El número introducido por el usuario",
+			"        int curr = 1; // El número que se usará en el bucle",
+			"",
+			"        // Objeto para leer lo que teclea el usuario.",
+			"        try {",
+			"            Scanner teclado = new Scanner(input);",
+			"            System.out.print(\"Introduce un número: \");",
+			"            num = teclado.nextInt();",
+			"            System.out.print(num + \"\\n\");",
+			"            teclado.close();",
+			"        } catch (Exception InputMismatchException) {",
+			"            System.out.println(\"Valor introducido no corresponde con el tipo esperado.\");",
+			"            System.exit(-1);",
+			"        }",
+			"",
+			"        // Código principal.",
+			"        System.out.printf(\"%d \", curr);",
+			"        // Un bucle hasta n.",
+			"        for (int i = 0; i < num - 1; i++) {",
+			"            curr++;",
+			"            System.out.printf(\"%d \", curr);",
+			"        }",
+			"",
+			"        // Valor final usado para el test unitario.",
+			"        return curr;",
+			"    }",
+			"",
+			"    // Ejecuta el método principal de la clase.",
+			"    public static void main(String[] args) {",
+			"        // Valores que simulan input del usuario.",
+			"        String input = \"3\\n\" + \"-1\\n\";",
+			"",
+			"        // Ejecutar función del ejercicio.",
+			"        ${2:funcion}(input);",
+			"    }",
+			"}",
+			""
+		  ],
+		"description": "Template for S1Dam exercises"
+	},
+	"Regular print": {
+		"prefix": "sysfout",
+		"body": [
+		  "System.out.printf(\"$0\");"
+		],
+		"description": ""
+	  }
+}
