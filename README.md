@@ -1,6 +1,6 @@
 ## Overview
 Repository used as a workspace for Java development on my programming lessons.
-[![Java CI](https://github.com/SufiAzarquiel/MyJavaWorkspace/actions/workflows/maven.yml/badge.svg)](https://github.com/SufiAzarquiel/MyJavaWorkspace/actions/workflows/maven.yml)
+[![Java CI](https://github.com/SufiAzarquiel/java-newworkspace/actions/workflows/maven.yml/badge.svg)](https://github.com/SufiAzarquiel/java-newworkspace/actions/workflows/maven.yml)
 
 ## Building
 ...

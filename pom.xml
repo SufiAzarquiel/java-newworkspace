@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.sufiAzarquiel</groupId>
-    <artifactId>my-java-workspace</artifactId>
+    <artifactId>java-newworkspace</artifactId>
     <version>1.0.1</version>
     <packaging>jar</packaging>
 
-    <name>My Java workspace</name>
+    <name>Java workspace</name>
 
-    <url>https://github.com/SufiAzarquiel/MyJavaWorkspace</url>
+    <url>https://github.com/SufiAzarquiel/java-newworkspace</url>
 
     <licenses>
         <license>
