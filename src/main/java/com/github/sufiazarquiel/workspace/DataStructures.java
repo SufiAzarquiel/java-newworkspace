@@ -3,9 +3,13 @@ package com.github.sufiazarquiel.workspace;
 import java.util.Scanner;
 
 public class DataStructures {
+    
+    /*
+     * Cuenta: Dado un texto contar cuantas veces se encuentra esa letra.
+     */
     public int cuenta(String input) {
         // Variables
-        String frase = ""; // El número introducido por el usuario
+        String frase = ""; // Texto introducido por el usuario.
         char letra = 'a';
         int total = 0; // El número que se usará en el bucle
 
