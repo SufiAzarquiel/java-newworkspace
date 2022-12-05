@@ -3,20 +3,22 @@ package com.github.sufiazarquiel.workspace;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 public class StringHomework {
     /*
      * Ejercicio 1: Programa que pase un String a mayúsculas y diga cuantas letras
      * han cambiado.
      */
-    public static String strEjer1(String input) {
+    public static String strEjer1() {
         // Variables
         String frase = "";
         int total = 0;
 
         // Objeto para leer lo que teclea el usuario.
         try {
-            Scanner teclado = new Scanner(input);
+            Scanner teclado = new Scanner(System.in);
             System.out.print("Introduce una frase: ");
             frase = teclado.nextLine();
             System.out.print(frase + "\n");
@@ -44,13 +46,13 @@ public class StringHomework {
      * Ejercicio 2: Programa que reciba una cadena y diga cuantas palabras contiene.
      * (Las palabras pueden estar separadas por espacios, puntos o comas).
      */
-    public static String strEjer2(String input) {
+    public static String strEjer2() {
         // Variables
         String frase = "";
 
         // Objeto para leer lo que teclea el usuario.
         try {
-            Scanner teclado = new Scanner(input);
+            Scanner teclado = new Scanner(System.in);
             System.out.print("Introduce una frase: ");
             frase = teclado.nextLine();
             System.out.print(frase + "\n");
@@ -74,14 +76,14 @@ public class StringHomework {
      * Ejercicio 3: Programa que codifique una cadena cambiando cada letra por la
      * siguiente en el código ASCII.
      */
-    public static String strEjer3(String input) {
+    public static String strEjer3() {
         // Variables
         String frase = "";
         String resultado = "";
 
         // Objeto para leer lo que teclea el usuario.
         try {
-            Scanner teclado = new Scanner(input);
+            Scanner teclado = new Scanner(System.in);
             System.out.print("Introduce una cadena: ");
             frase = teclado.nextLine();
             System.out.print(frase + "\n");
@@ -109,9 +111,9 @@ public class StringHomework {
      * Rotaciones: 3
      * Da como salida: “nesLu”
      */
-    public static StringBuilder strEjer4(String input) {
+    public static StringBuilder strEjer4() {
         // Objeto para leer lo que teclea el usuario.
-        Scanner teclado = new Scanner(input);
+        Scanner teclado = new Scanner(System.in);
 
         System.out.print("Introduce una cadena: ");
         StringBuilder frase = new StringBuilder(teclado.nextLine());
@@ -142,9 +144,9 @@ public class StringHomework {
      * Ejercicio 5: Programa que lea un numero double, lo convierta a una cadena y
      * le añada las comas separadoras de los miles.
      */
-    public static StringBuilder strEjer5(String input) {
+    public static StringBuilder strEjer5() {
         // Objeto para leer lo que teclea el usuario.
-        Scanner teclado = new Scanner(input);
+        Scanner teclado = new Scanner(System.in);
 
         System.out.print("Introduce un número: ");
         double num = teclado.nextDouble();
@@ -173,9 +175,9 @@ public class StringHomework {
      * Ejercicio 6: Programa que descubra si una palabra es o no palíndroma, es
      * decir se lee igual del derecho que del revés.
      */
-    public static boolean strEjer6(String input) {
+    public static boolean strEjer6() {
         // Objeto para leer lo que teclea el usuario.
-        Scanner teclado = new Scanner(input);
+        Scanner teclado = new Scanner(System.in);
 
         System.out.print("Introduce una palabra: ");
         StringBuilder palabra = new StringBuilder(teclado.nextLine());
@@ -199,9 +201,9 @@ public class StringHomework {
      * Ejercicio 7: Programa que sume todas las cifras de los números que aparecen
      * en una cadena de caracteres.
      */
-    public static int strEjer7(String input) {
+    public static int strEjer7() {
         // Objeto para leer lo que teclea el usuario.
-        Scanner teclado = new Scanner(input);
+        Scanner teclado = new Scanner(System.in);
 
         System.out.print("Introduce una cadena: ");
         StringBuilder cadena = new StringBuilder(teclado.nextLine());
@@ -228,9 +230,9 @@ public class StringHomework {
     /*
      * Ejercicio 8: Igual al anterior, pero sumando los números completos.
      */
-    public static int strEjer8(String input) {
+    public static int strEjer8() {
         // Objeto para leer lo que teclea el usuario.
-        Scanner teclado = new Scanner(input);
+        Scanner teclado = new Scanner(System.in);
 
         System.out.print("Introduce una cadena: ");
         StringBuilder cadena = new StringBuilder(teclado.nextLine());
@@ -264,15 +266,15 @@ public class StringHomework {
      * Ejercicio 9: Programa que recibe dos cadenas de caracteres y comprueba
      * cuantas veces aparece la primera en la segunda.
      */
-    public static int strEjer9(String input) {
+    public static int strEjer9() {
         // Objeto para leer lo que teclea el usuario.
-        Scanner teclado = new Scanner(input);
+        Scanner teclado = new Scanner(System.in);
 
         System.out.print("Introduce la cadena a buscar: ");
         StringBuilder clave = new StringBuilder(teclado.nextLine());
         System.out.print(clave + "\n");
 
-        System.out.print("Introduce la cadena donde se buscará: ");
+        System.out.print("Introduce la frase donde se buscará: ");
         StringBuilder cadena = new StringBuilder(teclado.nextLine());
         System.out.print(cadena + "\n");
 
@@ -302,21 +304,29 @@ public class StringHomework {
      * las letras acertadas. Si no acierta todas las letras en 8 intentos, se da el
      * juego por perdido.
      */
-    public static int ahorcado() {
+    public static int strEjer10() {
         // Objeto para leer lo que teclea el usuario.
         Scanner teclado = new Scanner(System.in);
 
         System.out.println("Juguemos al ahorcado!");
 
+        JPasswordField jpf = new JPasswordField();
+        JOptionPane.showConfirmDialog(null, jpf,
+                "Palabra secreta", JOptionPane.CLOSED_OPTION);
+        String secret = String.valueOf(jpf.getPassword());
+
         // Código principal.
         int total = 0;
-        StringBuilder palabra = new StringBuilder("sentencia");
-        StringBuilder salida = new StringBuilder("_________");
+        StringBuilder palabra = new StringBuilder(secret);
+        StringBuilder salida = new StringBuilder();
+        for (int i = 0; i < palabra.length(); i++) {
+            salida.append("_");
+        }
         for (int i = 0; i < 8; i++) {
             System.out.print("Introduce una letra: ");
-            String input = teclado.nextLine();
-            if (input.length() == 1) {
-                char letra = input.charAt(0);
+            String str = teclado.nextLine();
+            if (str.length() == 1) {
+                char letra = str.charAt(0);
                 for (int j = 0; j < palabra.length(); j++) {
                     if (letra == palabra.charAt(j)) {
                         salida.delete(j,
@@ -325,7 +335,7 @@ public class StringHomework {
                     }
                 }
             } else {
-                if (input.equals(palabra.toString())) {
+                if (str.equals(palabra.toString())) {
                     System.out.println("Has ganado!");
                     System.exit(0);
                 } else {
@@ -345,9 +355,9 @@ public class StringHomework {
      * Ejercicio 11: Programa que recibe dos cadenas de caracteres y comprueba
      * cuantas veces aparece la primera en la segunda.
      */
-    public static StringBuilder strEjer11(String input) {
+    public static StringBuilder strEjer11() {
         // Objeto para leer lo que teclea el usuario.
-        Scanner teclado = new Scanner(input);
+        Scanner teclado = new Scanner(System.in);
 
         System.out.print("Introduce una frase: ");
         StringBuilder frase = new StringBuilder(teclado.nextLine());
@@ -375,9 +385,9 @@ public class StringHomework {
      * tres letras. Una vez eliminadas esas palabras, no deben existir espacios
      * duplicados.
      */
-    public static String strEjer12(String input) {
+    public static String strEjer12() {
         // Objeto para leer lo que teclea el usuario.
-        Scanner teclado = new Scanner(input);
+        Scanner teclado = new Scanner(System.in);
 
         System.out.print("Introduce una frase: ");
         StringBuilder frase = new StringBuilder(teclado.nextLine());
@@ -409,9 +419,9 @@ public class StringHomework {
      * un String. El String solo contendrá letras y espacios de separación, nada
      * más.
      */
-    public static String strEjer13(String input) {
+    public static String strEjer13() {
         // Objeto para leer lo que teclea el usuario.
-        Scanner teclado = new Scanner(input);
+        Scanner teclado = new Scanner(System.in);
 
         System.out.print("Introduce una frase: ");
         String frase = teclado.nextLine();
@@ -440,9 +450,9 @@ public class StringHomework {
      * El programa debe pedir 2 palabras y luego dar otra
      * palabra resultado con las letras de las dos palabras intercaladas.
      */
-    public static String strEjer14(String input) {
+    public static String strEjer14() {
         // Objeto para leer lo que teclea el usuario.
-        Scanner teclado = new Scanner(input);
+        Scanner teclado = new Scanner(System.in);
 
         System.out.print("Introduce una palabra: ");
         String palabra1 = teclado.nextLine();
@@ -487,9 +497,9 @@ public class StringHomework {
      * como resultado la palabra que más vocales tenga. Se deben ir pidiendo
      * palabras al usuario hasta que este escriba la palabra “FIN”.
      */
-    public static String strEjer15(String input) {
+    public static String strEjer15() {
         // Objeto para leer lo que teclea el usuario.
-        Scanner teclado = new Scanner(input);
+        Scanner teclado = new Scanner(System.in);
 
         String[] palabras = new String[4];
 
@@ -535,9 +545,9 @@ public class StringHomework {
      * terminar en el mismo instante en que encuentre mas de dos vocales iguales,
      * no esperará a comprobar toda la palabra.
      */
-    public static boolean strEjer16(String input) {
+    public static boolean strEjer16() {
         // Objeto para leer lo que teclea el usuario.
-        Scanner teclado = new Scanner(input);
+        Scanner teclado = new Scanner(System.in);
 
         System.out.print("Introduce una palabra: ");
         String word = teclado.nextLine();
@@ -609,9 +619,9 @@ public class StringHomework {
      * Además siempre existirá el mismo número de notas que de asignaturas. El
      * número de asignaturas no es fijo, pueden ser 4, 5, 6 o más.
      */
-    public static String strEjer17(String input) {
+    public static String strEjer17() {
         // Objeto para leer lo que teclea el usuario.
-        Scanner teclado = new Scanner(input);
+        Scanner teclado = new Scanner(System.in);
 
         System.out.print("Escribe la lista de asignaturas: ");
         String asignaturasString = teclado.nextLine();
@@ -650,6 +660,72 @@ public class StringHomework {
     // Ejecuta el método principal de la clase.
     public static void main(String[] args) {
         System.out.println("String, StringBuilder");
+
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("¿Qué ejercicio quieres ejecutar?");
+
+        int num = teclado.nextInt();
+
+        switch (num) {
+            case 1:
+                strEjer1();
+                break;
+            case 2:
+                strEjer2();
+                break;
+            case 3:
+                strEjer3();
+                break;
+            case 4:
+                strEjer4();
+                break;
+            case 5:
+                strEjer5();
+                break;
+            case 6:
+                strEjer6();
+                break;
+            case 7:
+                strEjer7();
+                break;
+            case 8:
+                strEjer8();
+                break;
+            case 9:
+                strEjer9();
+                break;
+            case 10:
+                strEjer10();
+                break;
+            case 11:
+                strEjer11();
+                break;
+            case 12:
+                strEjer12();
+                break;
+            case 13:
+                strEjer13();
+                break;
+            case 14:
+                strEjer14();
+                break;
+            case 15:
+                strEjer15();
+                break;
+            case 16:
+                strEjer16();
+                break;
+            case 17:
+                strEjer17();
+                break;
+
+            default:
+                System.out.println("Ese ejercicio no existe.");
+                break;
+        }
+
+        teclado.close();
+
         /*
          * String input = "";
          * // Ejecutar función del ejercicio.
@@ -684,15 +760,14 @@ public class StringHomework {
          * 
          * // Ejercicio 8
          * strEjer8(input);
-         * 
-         * 
+         *
          * // Ejercicio 9
          * input = "la\n" + "La calle de la plaza\n";
          * strEjer9(input);
-         * 
+         *
          * // Ejercicio 10
-         * // ahorcado();
-         * 
+         * ahorcado();
+         *
          * // Ejercicio 11
          * input = "Hola a Todos";
          * strEjer11(input);
