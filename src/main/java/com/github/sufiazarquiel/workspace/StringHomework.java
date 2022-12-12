@@ -430,13 +430,20 @@ public class StringHomework {
         teclado.close();
 
         // Código principal.
-        String[] palabras = frase.split(" ");
+        StringTokenizer st = new StringTokenizer(frase);
         String maxStr = "";
-        for (int i = 0; i < palabras.length; i++) {
-            if (palabras[i].length() > maxStr.length()) {
-                maxStr = palabras[i];
+        while(st.hasMoreTokens()) {
+            String trozo = st.nextToken();
+            if (trozo.length() > maxStr.length()) {
+                maxStr = trozo;
             }
         }
+        // String[] palabras = frase.split(" ");
+        // for (int i = 0; i < palabras.length; i++) {
+        //     if (palabras[i].length() > maxStr.length()) {
+        //         maxStr = palabras[i];
+        //     }
+        // }
 
         // Salida del programa
         System.out.println("La palabra que más letras tiene es: " + maxStr);
@@ -474,7 +481,8 @@ public class StringHomework {
 
         // Poner la palabra mayor en mayúscula
         palabra1 = palabra1.toUpperCase();
-
+        palabra2 = palabra2.toLowerCase();
+        
         // Intercalar las letras
         String resultado = "";
         for (int i = 0; i < palabra1.length(); i++) {
@@ -485,7 +493,7 @@ public class StringHomework {
         }
 
         // Salida del programa
-        System.out.println("La palabra que más letras tiene es: " + resultado);
+        System.out.println(resultado);
 
         // Valor final usado para el test unitario.
         return resultado;
