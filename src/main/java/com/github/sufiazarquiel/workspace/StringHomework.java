@@ -432,7 +432,7 @@ public class StringHomework {
         // Código principal.
         StringTokenizer st = new StringTokenizer(frase);
         String maxStr = "";
-        while(st.hasMoreTokens()) {
+        while (st.hasMoreTokens()) {
             String trozo = st.nextToken();
             if (trozo.length() > maxStr.length()) {
                 maxStr = trozo;
@@ -440,9 +440,9 @@ public class StringHomework {
         }
         // String[] palabras = frase.split(" ");
         // for (int i = 0; i < palabras.length; i++) {
-        //     if (palabras[i].length() > maxStr.length()) {
-        //         maxStr = palabras[i];
-        //     }
+        // if (palabras[i].length() > maxStr.length()) {
+        // maxStr = palabras[i];
+        // }
         // }
 
         // Salida del programa
@@ -482,15 +482,27 @@ public class StringHomework {
         // Poner la palabra mayor en mayúscula
         palabra1 = palabra1.toUpperCase();
         palabra2 = palabra2.toLowerCase();
-        
+
         // Intercalar las letras
         String resultado = "";
-        for (int i = 0; i < palabra1.length(); i++) {
-            resultado += palabra1.charAt(i);
-            if (i < palabra2.length()) {
-                resultado += palabra2.charAt(i);
-            }
+
+        // Propuesta A
+        // for (int i = 0; i < palabra1.length(); i++) {
+        // resultado += palabra1.charAt(i);
+        // if (i < palabra2.length()) {
+        // resultado += palabra2.charAt(i);
+        // }
+        // } p s a u l s a b r a
+
+        // Propuesta B
+        StringBuilder palabra1StringBuilder = new StringBuilder(palabra1);
+        int charInsertPosition = 1;
+        for (int i = 0; i < palabra2.length(); i++) {
+            palabra1StringBuilder.insert(charInsertPosition, palabra2.charAt(i));
+            charInsertPosition += 2;
         }
+
+        resultado = palabra1StringBuilder.toString();
 
         // Salida del programa
         System.out.println(resultado);
@@ -509,32 +521,29 @@ public class StringHomework {
         // Objeto para leer lo que teclea el usuario.
         Scanner teclado = new Scanner(System.in);
 
-        String[] palabras = new String[4];
-
-        for (int i = 0; i < 4; i++) {
-            System.out.print("Introduce una palabra: ");
-            palabras[i] = teclado.nextLine();
-            System.out.print(palabras[i] + "\n");
-        }
-
-        teclado.close();
-
         // Código principal.
+        String palabra = "";
         int vocales = 0;
-        int maxVocales = 0;
         String resultado = "";
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < palabras[i].length(); j++) {
-                if ("AEIOUaeiou".contains(String.valueOf(palabras[i].charAt(j)))) {
+        int maxVocales = 0;
+
+        while (!palabra.equals("FIN")) {
+            System.out.print("Introduce una palabra: ");
+            palabra = teclado.nextLine();
+            for (int j = 0; j < palabra.length(); j++) {
+                if ("AEIOUaeiou".contains(String.valueOf(palabra.charAt(j)))) {
                     vocales++;
                 }
             }
             if (vocales > maxVocales) {
-                resultado = palabras[i];
+                resultado = palabra;
                 maxVocales = vocales;
             }
             vocales = 0;
         }
+
+        // Cerrar objeto Scanner
+        teclado.close();
 
         // Salida del programa
         System.out.println("La palabra con más vocales es: " + resultado);
