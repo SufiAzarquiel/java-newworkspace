@@ -573,9 +573,10 @@ public class StringHomework {
         teclado.close();
 
         // Código principal.
-        boolean vocalRepetida = false;
         int j = 0;
         int a = 0, e = 0, i = 0, o = 0, u = 0;
+        boolean vocalRepetida = a >= 3 || e >= 3 || i >= 3 || o >= 3 || u >= 3;
+
         while (!vocalRepetida && j < word.length()) {
             switch (word.charAt(j)) {
                 case 'a':
@@ -600,10 +601,6 @@ public class StringHomework {
                     break;
                 default:
                     break;
-            }
-
-            if (a > 1 || e > 1 || i > 1 || o > 1 || u > 1) {
-                vocalRepetida = true;
             }
 
             j++;
@@ -653,29 +650,29 @@ public class StringHomework {
         // Código principal.
         StringTokenizer asignaturas = new StringTokenizer(asignaturasString, ":");
         StringTokenizer notas = new StringTokenizer(notasString, ":");
-        String resultado = "";
+        String aprobadas = "";
 
         while (asignaturas.hasMoreTokens()) {
             String asignatura = asignaturas.nextToken();
             int nota = Integer.parseInt(notas.nextToken());
             if (nota > 4) {
-                resultado += asignatura + " ";
+                aprobadas += asignatura + " ";
             }
         }
 
         // Salida del programa
-        if (resultado.length() > 0) {
-            System.out.println("Las asignaturas aprobadas son: " + resultado);
+        if (aprobadas.length() > 0) {
+            System.out.println("Las asignaturas aprobadas son: " + aprobadas);
         } else {
             System.out.println("No tiene asignaturas aprobadas.");
         }
 
         // Valor final usado para el test unitario.
-        return resultado;
+        return aprobadas;
     }
 
-    // Ejecuta el método principal de la clase.
-    public static void main(String[] args) {
+    // Introduce un número -> ejecuta el ejercicio correspondiente.
+    public static void runStr() {
         System.out.println("String, StringBuilder");
 
         Scanner teclado = new Scanner(System.in);
