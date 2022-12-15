@@ -11,4 +11,9 @@ public class Run {
     public int getValue() {
         return this.value;
     }
+
+    // Ejecuta cualquier clase
+    public static void main(String[] args) {
+        StringHomework.runStr();
+    }
 }
