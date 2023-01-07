@@ -75,5 +75,36 @@
 		  "System.out.printf(\"$0\");"
 		],
 		"description": ""
-	  }
+	},
+	"Homework Function": {
+	"prefix": "ejer",
+	"body": [
+		"/*",
+		" * Ejercicio ${2:1}: Descripción",
+		" */",
+		"public static ${1:int} arrEjer${2:1}() {",
+		"    // Variables",
+		"    int total = 0;",
+		"",
+		"    // Objeto para leer lo que teclea el usuario",
+		"    try {",
+		"        Scanner teclado = new Scanner(System.in);",
+		"        System.out.print(\"Introduce una frase: \");",
+		"        total = teclado.nextInt();",
+		"        System.out.print(total + \"\\n\");",
+		"        teclado.close();",
+		"    } catch (Exception InputMismatchException) {",
+		"        System.out.println(\"Valor introducido no corresponde con el tipo esperado.\");",
+		"        System.exit(-1);",
+		"    }",
+		"",
+		"    // Código principal",
+		"    total++;",
+		"",
+		"    // Valor final",
+		"    return total;",
+		"}"
+	],
+	"description": "Plantilla para los ejercicios de clase de programación en S1DAM"
+	}
 }
