@@ -148,10 +148,4 @@ public class Arrays {
         }
 
     }
-
-    // Array demonstrations
-    public static void main(String[] args) {
-        // Run method
-        grades2DArray();
-    }
 }
