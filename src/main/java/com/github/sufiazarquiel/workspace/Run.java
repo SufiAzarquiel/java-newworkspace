@@ -12,8 +12,21 @@ public class Run {
         return this.value;
     }
 
-    // Ejecuta cualquier clase
+    // Array homework
     public static void main(String[] args) {
-        StringHomework.runStr();
+        // Run method
+        ArrayHomework runArrayHomework = new ArrayHomework();
+        runArrayHomework.arrEjer4();
     }
+
+    // // String homework
+    // public static void main(String[] args) {
+    //     StringHomework.runStr();
+    // }
+
+    // // Array demonstrations
+    // public static void main(String[] args) {
+    //     // Run method
+    //     grades2DArray();
+    // }
 }
