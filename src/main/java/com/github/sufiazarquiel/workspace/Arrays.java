@@ -1,5 +1,7 @@
 package com.github.sufiazarquiel.workspace;
 
+import java.util.Random;
+
 public class Arrays {
 
     public static void demoOne() {
@@ -147,5 +149,147 @@ public class Arrays {
             combinedGrade = 0;
         }
 
+    }
+
+    public static void names2DArray() {
+        int[][] grades2D = {
+                { 8, 6, 9, 3, 9, 2 },
+                { 1, 3, 7, 8, 5, 5 },
+                { 7, 9, 5, 6, 9, 2 }
+        };
+        String[] nombres = { "Andrés", "María", "Susana" };
+        String[] modulos = {
+                "BBDD",
+                "Entornos",
+                "Programación",
+                "Inglés",
+                "Sistemas",
+                "FOL"
+        };
+
+        System.out.println("Listado de modulos que tiene aprobados cada alumno");
+        for (int i = 0; i < grades2D.length; i++) {
+            System.out.print(nombres[i] + ": ");
+            for (int j = 0; j < grades2D[i].length; j++) {
+                if (grades2D[i][j] > 4) {
+                    System.out.printf("%s ", modulos[j]);
+                }
+            }
+            System.out.println();
+        }
+
+        System.out.println();
+
+        System.out.println("Listado de los alumnos que han aprobado cada modulo");
+        for (int i = 0; i < grades2D[1].length; i++) {
+            System.out.print(modulos[i] + ": ");
+            for (int j = 0; j < grades2D.length; j++) {
+                if (grades2D[j][i] > 4) {
+                    System.out.printf("%s ", nombres[j]);
+                }
+            }
+            System.out.println();
+        }
+
+        System.out.println();
+
+        System.out.println("Nota media de cada alumno");
+        for (int i = 0; i < grades2D.length; i++) {
+            System.out.print(nombres[i] + ": ");
+            double gradeSum = 0;
+            for (int j = 0; j < grades2D[i].length; j++) {
+                gradeSum += grades2D[i][j];
+            }
+            System.out.printf("%.2f", gradeSum / grades2D[1].length);
+            System.out.println();
+        }
+
+        System.out.println();
+
+        System.out.println("Módulo con mejor media");
+        double mediaMaxima = 0;
+        int moduloMayor = 0;
+        for (int i = 0; i < grades2D[1].length; i++) {
+            double moduloSum = 0;
+            for (int j = 0; j < grades2D.length; j++) {
+                moduloSum += grades2D[j][i];
+            }
+            if (moduloSum / grades2D.length > mediaMaxima) {
+                mediaMaxima = moduloSum / grades2D.length;
+                moduloMayor = i;
+            }
+        }
+        System.out.printf("%s: %.2f", modulos[moduloMayor], mediaMaxima);
+    }
+
+    public static void printRandom3DArray() {
+        int[][][] datosUniversidad = new int[5][4][2];
+        Random rand = new Random();
+        System.out.print("{\n");
+        for (int i = 0; i < datosUniversidad.length; i++) {
+            System.out.print("{");
+            for (int j = 0; j < datosUniversidad[i].length; j++) {
+                System.out.print("{");
+                for (int j2 = 0; j2 < datosUniversidad[i][j].length; j2++) {
+                    datosUniversidad[i][j][j2] = 17 + rand.nextInt(5);
+                    System.out.printf("%d,", datosUniversidad[i][j][j2]);
+                }
+                System.out.print("},");
+            }
+            System.out.print("},\n");
+        }
+        System.out.print("}\n");
+    }
+
+    public static void university3DArray() {
+        // Datos de una universidad
+        String[] gradosStrings = { "Derecho",
+                "Industriales",
+                "Ingeniería",
+                "ADE",
+                "Magisterio",
+                "Arquitectura" };
+        String[] cursoStrings = { "Primero",
+                "Segundo",
+                "Tercero",
+                "Cuarto" };
+        String[] sexoStrings = { "Hombres", "Mujeres" };
+        // Filas: Grados
+        // Columnas: Cursos (1ero a 4rto)
+        // Profundidad: Total de hombres 0 y de mujeres 1 en cada curso
+        int[][][] datosUniversidad = {
+                // 5 carreras 4 cursos 2 huecos para hombres y mujeres
+                { { 17, 21 }, { 19, 21 }, { 18, 21 }, { 20, 17 } },
+                { { 19, 17 }, { 21, 17 }, { 19, 17 }, { 17, 21 } },
+                { { 19, 18 }, { 17, 18 }, { 21, 19 }, { 18, 18 } },
+                { { 19, 17 }, { 17, 21 }, { 21, 18 }, { 18, 20 } },
+                { { 20, 17 }, { 17, 18 }, { 17, 20 }, { 17, 21 } }
+        };
+        // Listado de cuantos alumnos hay en cada grado
+        for (int i = 0; i < datosUniversidad.length; i++) {
+            int alumnos = 0;
+            for (int j = 0; j < datosUniversidad[i].length; j++) {
+                for (int j2 = 0; j2 < datosUniversidad[i][j].length; j2++) {
+                    alumnos += datosUniversidad[i][j][j2];
+                }
+            }
+            System.out.printf("%s: %d\n", gradosStrings[i], alumnos);
+        }
+        // Listado de cuantos alumnos hay por curso
+        for (int j = 0; j < datosUniversidad[1].length; j++) {
+            int alumnos = 0;
+            for (int i = 0; i < datosUniversidad.length; i++) {
+                for (int j2 = 0; j2 < datosUniversidad[i][j].length; j2++) {
+                    alumnos += datosUniversidad[i][j][j2];
+                }
+            }
+            System.out.printf("%s: %d\n", cursoStrings[j], alumnos);
+        }
+    }
+
+    // Array demonstrations
+    public static void main(String[] args) {
+        // Run method
+        university3DArray();
     }
 }
