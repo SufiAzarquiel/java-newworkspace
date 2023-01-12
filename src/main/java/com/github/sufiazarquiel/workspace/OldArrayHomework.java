@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Random;
 
-public class ArrayHomework {
+public class OldArrayHomework {
     public int[] randomIntArray(int LENGTH) {
         Random rd = new Random();
         int[] finalArray = new int[LENGTH];
@@ -52,6 +52,7 @@ public class ArrayHomework {
         // Resultado
         System.out.printf("El número que buscas aparece %d veces", total);
     }
+    
 
     /*
      * Ejercicio 2: Dado un array de números enteros, realiza un programa que diga
@@ -62,7 +63,6 @@ public class ArrayHomework {
         // Variables
         boolean ordenado = true;
         int[] randArray = randomIntArray(5);
-        int[] sortedArray = { 4, 7, 54, 1002 };
 
         // Código principal
         for (int i = 1; i < randArray.length; i++) {
@@ -146,7 +146,13 @@ public class ArrayHomework {
             }
             itemsLeft--;
         }
-        System.out.println(Arrays.toString(indexArray));
+        // create copy of indexarray flipped
+        int[] indexArrayFlipped = new int[5];
+        for (int i = 0; i < indexArray.length; i++) {
+            indexArrayFlipped[i] = indexArray[indexArray.length - 1 - i];
+        }
+        // print indexarrayflipped
+        System.out.println(Arrays.toString(indexArrayFlipped));
     }
 
     // Introduce un número -> ejecuta el ejercicio correspondiente

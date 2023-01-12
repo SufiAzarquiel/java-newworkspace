@@ -2,7 +2,7 @@ package com.github.sufiazarquiel.workspace;
 
 import java.util.Random;
 
-public class Arrays {
+public class SufiArrays {
 
     public static void demoOne() {
         // Individual variable
@@ -257,13 +257,21 @@ public class Arrays {
         // Filas: Grados
         // Columnas: Cursos (1ero a 4rto)
         // Profundidad: Total de hombres 0 y de mujeres 1 en cada curso
+        //int[][][] datosUniversidad = {
+        //        // 5 carreras 4 cursos 2 huecos para hombres y mujeres
+        //        { { 1, 2 }, { 1, 2 }, { 1, 2 }, { 2, 1 } },
+        //        { { 1, 1 }, { 2, 1 }, { 1, 1 }, { 1, 2 } },
+        //        { { 1, 1 }, { 1, 1 }, { 2, 1 }, { 1, 1 } },
+        //        { { 1, 1 }, { 1, 2 }, { 2, 1 }, { 1, 2 } },
+        //        { { 2, 1 }, { 1, 1 }, { 1, 2 }, { 1, 2 } }
+        //};
         int[][][] datosUniversidad = {
-                // 5 carreras 4 cursos 2 huecos para hombres y mujeres
-                { { 17, 21 }, { 19, 21 }, { 18, 21 }, { 20, 17 } },
-                { { 19, 17 }, { 21, 17 }, { 19, 17 }, { 17, 21 } },
-                { { 19, 18 }, { 17, 18 }, { 21, 19 }, { 18, 18 } },
-                { { 19, 17 }, { 17, 21 }, { 21, 18 }, { 18, 20 } },
-                { { 20, 17 }, { 17, 18 }, { 17, 20 }, { 17, 21 } }
+        // 5 carreras 4 cursos 2 huecos para hombres y mujeres
+        { { 17, 21 }, { 19, 21 }, { 18, 21 }, { 20, 17 } },
+        { { 19, 17 }, { 21, 17 }, { 19, 17 }, { 17, 21 } },
+        { { 19, 18 }, { 17, 18 }, { 21, 19 }, { 18, 18 } },
+        { { 19, 17 }, { 17, 21 }, { 21, 18 }, { 18, 20 } },
+        { { 20, 17 }, { 17, 18 }, { 17, 24 }, { 17, 21 } }
         };
         // Listado de cuantos alumnos hay en cada grado
         for (int i = 0; i < datosUniversidad.length; i++) {
@@ -276,7 +284,7 @@ public class Arrays {
             System.out.printf("%s: %d\n", gradosStrings[i], alumnos);
         }
         // Listado de cuantos alumnos hay por curso
-        for (int j = 0; j < datosUniversidad[1].length; j++) {
+        for (int j = 0; j < datosUniversidad[0].length; j++) {
             int alumnos = 0;
             for (int i = 0; i < datosUniversidad.length; i++) {
                 for (int j2 = 0; j2 < datosUniversidad[i][j].length; j2++) {
@@ -285,11 +293,47 @@ public class Arrays {
             }
             System.out.printf("%s: %d\n", cursoStrings[j], alumnos);
         }
+        // Listado de cuantos alumnos hay por sexo
+        for (int k = 0; k < datosUniversidad[0][0].length; k++) {
+            int alumnos = 0;
+            for (int i = 0; i < datosUniversidad.length; i++) {
+                for (int j = 0; j < datosUniversidad[j].length; j++) {
+                    alumnos += datosUniversidad[i][j][k];
+                }
+            }
+            System.out.printf("%s: %d\n", sexoStrings[k], alumnos);
+        }
+        // Listado de cuantos alumnos hay por grado y curso
+        for (int i = 0; i < datosUniversidad.length; i++) {
+            System.out.printf("%s: \n", gradosStrings[i]);
+            for (int j = 0; j < datosUniversidad[j].length; j++) {
+                int alumnos = 0;
+                for (int k = 0; k < datosUniversidad[i][j].length; k++) {
+                    alumnos += datosUniversidad[i][j][k];
+                }
+                System.out.printf("%s: %d ", cursoStrings[j], alumnos);
+            }
+            System.out.printf("\n");
+        }
+        // Listado de cuantos alumnos hay por grado y curso
+        int difMaxima = 0, cursoDifMaxima = 0, gradoDifMaxima = 0;
+        for (int i = 0; i < datosUniversidad.length; i++) {
+            for (int j = 0; j < datosUniversidad[j].length; j++) {
+                int chicos = datosUniversidad[i][j][0];
+                int chicas = datosUniversidad[i][j][1];
+                if (Math.abs(chicos-chicas) > difMaxima) {
+                    difMaxima = Math.abs(chicos-chicas);
+                    gradoDifMaxima = i;
+                    cursoDifMaxima = j;
+                }
+            }
+        }
+        System.out.printf("Clase de diferencia maxima: %s de %s\nDiferencia maxima: %d", cursoStrings[cursoDifMaxima], gradosStrings[gradoDifMaxima], difMaxima);
     }
 
     // // Array demonstrations
     // public static void main(String[] args) {
-    //     // Run method
-    //     university3DArray();
+    // // Run method
+    // university3DArray();
     // }
 }
