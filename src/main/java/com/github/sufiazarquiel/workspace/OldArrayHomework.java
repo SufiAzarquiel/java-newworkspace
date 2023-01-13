@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class OldArrayHomework {
-    public int[] randomIntArray(int LENGTH) {
+    public int[] randomIntArray(int LENGTH, int RANGE) {
         Random rd = new Random();
         int[] finalArray = new int[LENGTH];
         for (int i = 0; i < finalArray.length; i++) {
-            finalArray[i] = rd.nextInt(10);
+            finalArray[i] = rd.nextInt(RANGE);
         }
         System.out.println("Array generado: " + Arrays.toString(finalArray));
         return finalArray;
@@ -52,7 +52,6 @@ public class OldArrayHomework {
         // Resultado
         System.out.printf("El número que buscas aparece %d veces", total);
     }
-    
 
     /*
      * Ejercicio 2: Dado un array de números enteros, realiza un programa que diga
@@ -62,7 +61,7 @@ public class OldArrayHomework {
     public boolean arrEjer2() {
         // Variables
         boolean ordenado = true;
-        int[] randArray = randomIntArray(5);
+        int[] randArray = randomIntArray(5, 20);
 
         // Código principal
         for (int i = 1; i < randArray.length; i++) {
@@ -107,10 +106,15 @@ public class OldArrayHomework {
             if (consulta.equals("EXIT")) {
                 consultando = false;
             } else {
+                boolean encontrado = false;
                 for (String[] persona : agendaStrings) {
                     if (Arrays.asList(persona).contains(consulta)) {
                         System.out.printf("Nombre: %s Ciudad: %s\n", persona[0], persona[1]);
+                        encontrado = true;
                     }
+                }
+                if (encontrado == false) {
+                    System.out.println("No se ha encontrado el nombre o la dirección");
                 }
             }
         }
@@ -125,7 +129,7 @@ public class OldArrayHomework {
      */
     public void arrEjer4() {
         // Variables
-        int[] randArray = {34, 54, 12, 85, 45};
+        int[] randArray = { 34, 54, 12, 85, 45 };
         int[] indexArray = new int[5];
         for (int i = 0; i < indexArray.length; i++) {
             indexArray[i] = i;
@@ -135,12 +139,12 @@ public class OldArrayHomework {
         // Código principal
         while (itemsLeft > 0) {
             for (int i = 1; i < randArray.length; i++) {
-                if (randArray[i-1] > randArray [i]) {
-                    int temp = randArray[i-1];
-                    randArray[i-1] = randArray[i];
+                if (randArray[i - 1] > randArray[i]) {
+                    int temp = randArray[i - 1];
+                    randArray[i - 1] = randArray[i];
                     randArray[i] = temp;
-                    temp = indexArray[i-1];
-                    indexArray[i-1] = indexArray[i];
+                    temp = indexArray[i - 1];
+                    indexArray[i - 1] = indexArray[i];
                     indexArray[i] = temp;
                 }
             }
