@@ -82,7 +82,7 @@
 		"/*",
 		" * Ejercicio ${2:1}: Descripción",
 		" */",
-		"public static ${1:int} arrEjer${2:1}() {",
+		"public ${1:int} arrEjer${2:1}() {",
 		"    // Variables",
 		"    int total = 0;",
 		"",
