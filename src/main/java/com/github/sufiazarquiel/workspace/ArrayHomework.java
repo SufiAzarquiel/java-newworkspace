@@ -425,4 +425,74 @@ public class ArrayHomework {
         // Print array
         System.out.println(Arrays.toString(intArray));
     }
+
+    /*
+     * Ejercicio 13: Crea un programa que almacene un array bidimensional (6x6) con
+     * pocos valores
+     * en un array unidimensional. En el array unidimensional vamos almacenando
+     * cada valor original junto con su fila y columna, es decir por cada valor del
+     * array
+     * original almacenamos tres valores en el resultado.
+     * 
+     * Array original
+     * 0 0 0 0 0 0
+     * 0 0 0 0 5 0
+     * 0 8 0 0 0 9
+     * 0 0 0 0 0 0
+     * 0 0 0 7 0 0
+     * 0 0 3 0 0 0
+     */
+    public void arrEjer13() {
+        // Array original
+        int[][] array6x6 = new int[6][6];
+        array6x6[1][4] = 5;
+        array6x6[2][1] = 8;
+        array6x6[2][5] = 9;
+        array6x6[4][3] = 7;
+        array6x6[5][2] = 3;
+        // Código principal
+        int[] array1x18 = new int[18];
+        int index = 0;
+        for (int i = 0; i < array6x6.length; i++) {
+            for (int j = 0; j < array6x6[i].length; j++) {
+                if (array6x6[i][j] != 0) {
+                    array1x18[index] = array6x6[i][j];
+                    array1x18[index + 1] = i;
+                    array1x18[index + 2] = j;
+                    index += 3;
+                }
+            }
+        }
+        // Print array
+        System.out.println(Arrays.toString(array1x18));
+    }
+
+    /*
+     * Ejercicio 14: Programa que simule el juego de las minas. El programa
+     * rellenará de forma
+     * aleatoria un array de 5x5 con 10 minas. Una vez relleno, pedirá que
+     * escribamos
+     * coordenada y mostrará el mensaje MINA, en caso de haber pisado una, o bien un
+     * numero que indica cuantas minas hay alrededor.
+     * 0 1 1 0 0
+     * 1 0 1 0 1
+     * 1 1 0 0 0
+     * 0 0 0 0 1
+     * 0 0 1 0 1
+     * 
+     * Ejemplo:
+     * Coordenada Respuesta
+     * (1,4) MINA
+     * (1,1) 6
+     */
+    public void arrEjer14() {
+        // Mapa
+        int[][] array5x5 = new int[5][5];
+        // fill array with 0 and 1 randomly
+        for (int i = 0; i < array5x5.length; i++) {
+            for (int j = 0; j < array5x5[i].length; j++) {
+                array5x5[i][j] = (int) (Math.random() * 2);
+            }
+        }
+    }
 }
