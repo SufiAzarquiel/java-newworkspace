@@ -2,6 +2,7 @@ package com.github.sufiazarquiel.workspace;
 
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Random;
 
 public class ArrayHomework {
@@ -486,13 +487,82 @@ public class ArrayHomework {
      * (1,1) 6
      */
     public void arrEjer14() {
-        // Mapa
-        int[][] array5x5 = new int[5][5];
-        // fill array with 0 and 1 randomly
+        // Game constants
+        final int MINE_TOTAL = 10;
+        final int MAP_SIZE = 5;
+
+        // Create map with mines
+        int[][] array5x5 = new int[MAP_SIZE][MAP_SIZE];
+        for (int i = 0; i < MINE_TOTAL; i++) {
+            int x = (int) (Math.random() * MAP_SIZE);
+            int y = (int) (Math.random() * MAP_SIZE);
+            while (array5x5[x][y] == 1) {
+                x = (int) (Math.random() * MAP_SIZE);
+                y = (int) (Math.random() * MAP_SIZE);
+            }
+            array5x5[x][y] = 1;
+        }
+
+        // Show map on screen
         for (int i = 0; i < array5x5.length; i++) {
-            for (int j = 0; j < array5x5[i].length; j++) {
-                array5x5[i][j] = (int) (Math.random() * 2);
+            System.out.println(Arrays.toString(array5x5[i]));
+        }
+
+        // Ask user for coordinate
+        String inputMismatchString = "Introduce un numero entero del 0 al 5.";
+        int userX = 0, userY = 0;
+        System.out.println("Introduce una coordenada");
+        Scanner teclado = new Scanner(System.in);
+        try {
+            System.out.print("x: ");
+            userX = teclado.nextInt();
+            if (userX < 0 || userX > 5) {
+                throw new InputMismatchException(inputMismatchString);
+            }
+            System.out.print("y: ");
+            userY = teclado.nextInt();
+            if (userY < 0 || userY > 5) {
+                throw new InputMismatchException(inputMismatchString);
+            }
+        } catch (Exception InputMismatchException) {
+            System.out.println(inputMismatchString);
+            System.exit(-1);
+        } finally {
+            teclado.close();
+        }
+
+        // Check if mine is in user's chosen position
+        int minesAround = 0;
+        if (array5x5[userY][userX] == 1) {
+            System.out.println("MINA");
+            System.exit(0);
+        } else {
+            // Count number of mines around player's position
+            if (userY > 0 && userX > 0 && array5x5[userY - 1][userX - 1] == 1) {
+                minesAround++;
+            }
+            if (userY > 0 && array5x5[userY - 1][userX] == 1) {
+                minesAround++;
+            }
+            if (userY > 0 && userX < 4 && array5x5[userY - 1][userX + 1] == 1) {
+                minesAround++;
+            }
+            if (userX > 0 && array5x5[userY][userX - 1] == 1) {
+                minesAround++;
+            }
+            if (userX < 4 && array5x5[userY][userX + 1] == 1) {
+                minesAround++;
+            }
+            if (userY < 4 && userX > 0 && array5x5[userY + 1][userX - 1] == 1) {
+                minesAround++;
+            }
+            if (userY < 4 && array5x5[userY + 1][userX] == 1) {
+                minesAround++;
+            }
+            if (userY < 4 && userX < 4 && array5x5[userY + 1][userX + 1] == 1) {
+                minesAround++;
             }
         }
+        System.out.println("Minas alrededor: " + minesAround);
     }
 }
