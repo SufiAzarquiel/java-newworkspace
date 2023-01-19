@@ -1,6 +1,7 @@
 package com.github.sufiazarquiel.workspace;
 
 import java.util.Scanner;
+import java.util.stream.Stream;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Random;
@@ -564,5 +565,105 @@ public class ArrayHomework {
             }
         }
         System.out.println("Minas alrededor: " + minesAround);
+    }
+
+    /*
+     * Ejercicio 15: Escribe un programa que genere automáticamente un cuadro
+     * mágico. Un cuadro
+     * mágico es aquel en el que todas sus filas, columnas y diagonales suman igual.
+     * Se
+     * debe generar un cuadro de tamaño impar. Ejemplo si elegimos un cuadro de 5x5
+     * este hay que rellenarlo con los números del 1 al 25.
+     * El proceso de generación consiste en situar el número 1 en el centro de la
+     * primera fila, el número siguiente en la casilla situada encima y a la derecha
+     * y así
+     * sucesivamente. Suponemos que el array es cíclico, entonces la casilla encima
+     * de
+     * la primera fila es la última fila, y la casilla a la derecha de la última es
+     * la
+     * primera. En caso de caer en una casilla ya ocupada se coloca el número debajo
+     * del que acabamos de colocar.
+     * Este es el cuadro mágico de tamaño 3
+     * 8 1 6
+     * 3 5 7
+     * 4 9 2
+     */
+    public void arrEjer15() {
+        // Variables & Arrays
+        int dimensionCuadro = 0;
+
+        // Objeto para leer lo que teclea el usuario
+        String inputMismatchString = "Introduce un número entero impar.";
+        Scanner teclado = new Scanner(System.in);
+        System.out.print("Dimensión del cuadro mágico: ");
+        try {
+            dimensionCuadro = teclado.nextInt();
+
+            // Comprobar que el input es correcto
+            if (dimensionCuadro % 2 == 0) {
+                throw new InputMismatchException(inputMismatchString);
+            }
+        } catch (Exception InputMismatchException) {
+            System.out.println(inputMismatchString);
+            System.exit(-1);
+        } finally {
+            teclado.close();
+        }
+
+        // Crear el cuadro mágico
+        int[][] cuadroMagico = new int[dimensionCuadro][dimensionCuadro];
+        int x = dimensionCuadro / 2;
+        int y = 0;
+        cuadroMagico[y][x] = 1;
+        for (int i = 2; i <= dimensionCuadro * dimensionCuadro; i++) {
+            int prev_y = y;
+            int prev_x = x;
+            y = y <= 0 ? dimensionCuadro - 1 : y - 1;
+            x = (x + 1) >= dimensionCuadro ? 0 : x + 1;
+            if (cuadroMagico[y][x] != 0) {
+                y = prev_y + 1 >= dimensionCuadro ? 0 : prev_y + 1;
+                x = prev_x;
+                cuadroMagico[y][x] = i;
+            } else {
+                cuadroMagico[y][x] = i;
+            }
+        }
+
+        // Mostrar el array en pantalla
+        for (int j = 0; j < cuadroMagico.length; j++) {
+            System.out.println(Arrays.toString(cuadroMagico[j]));
+        }
+
+        // Arrays que contienen la suma de cada fila, columna y diagonal
+        int[] sumRows = new int[dimensionCuadro];
+        int[] sumCols = new int[dimensionCuadro];
+        int[] sumDiag = new int[2];
+
+        // Calcular y mostrar las sumas de las filas, columnas y diagonales
+        for (int i = 0; i < dimensionCuadro; i++) {
+            for (int j = 0; j < cuadroMagico.length; j++) {
+                sumCols[i] += cuadroMagico[j][i];
+                sumRows[i] += cuadroMagico[i][j];
+                if (i == j) {
+                    sumDiag[0] += cuadroMagico[i][j];
+                }
+                if (i + j == cuadroMagico.length - 1) {
+                    sumDiag[1] += cuadroMagico[i][j];
+                }
+            }
+        }
+        System.out.println("Suma de las filas" + Arrays.toString(sumRows));
+        System.out.println("Suma de las columnas" + Arrays.toString(sumCols));
+        System.out.println("Suma de las diagonales" + Arrays.toString(sumDiag));
+
+        // Comprobar que las sumas sean iguales
+        boolean isMagicSquare = true;
+        for (int i = 0; i < sumRows.length; i++) {
+            if (sumRows[i] != sumCols[i] || sumRows[i] != sumDiag[0] || sumRows[i] != sumDiag[1]) {
+                isMagicSquare = false;
+                break;
+            }
+        }
+        System.out.println("El array es un cuadro mágico: " + isMagicSquare);
     }
 }
