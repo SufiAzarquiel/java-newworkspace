@@ -1,6 +1,8 @@
 package com.github.sufiazarquiel.workspace;
 
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class SufiArrays {
 
@@ -257,21 +259,21 @@ public class SufiArrays {
         // Filas: Grados
         // Columnas: Cursos (1ero a 4rto)
         // Profundidad: Total de hombres 0 y de mujeres 1 en cada curso
-        //int[][][] datosUniversidad = {
-        //        // 5 carreras 4 cursos 2 huecos para hombres y mujeres
-        //        { { 1, 2 }, { 1, 2 }, { 1, 2 }, { 2, 1 } },
-        //        { { 1, 1 }, { 2, 1 }, { 1, 1 }, { 1, 2 } },
-        //        { { 1, 1 }, { 1, 1 }, { 2, 1 }, { 1, 1 } },
-        //        { { 1, 1 }, { 1, 2 }, { 2, 1 }, { 1, 2 } },
-        //        { { 2, 1 }, { 1, 1 }, { 1, 2 }, { 1, 2 } }
-        //};
+        // int[][][] datosUniversidad = {
+        // // 5 carreras 4 cursos 2 huecos para hombres y mujeres
+        // { { 1, 2 }, { 1, 2 }, { 1, 2 }, { 2, 1 } },
+        // { { 1, 1 }, { 2, 1 }, { 1, 1 }, { 1, 2 } },
+        // { { 1, 1 }, { 1, 1 }, { 2, 1 }, { 1, 1 } },
+        // { { 1, 1 }, { 1, 2 }, { 2, 1 }, { 1, 2 } },
+        // { { 2, 1 }, { 1, 1 }, { 1, 2 }, { 1, 2 } }
+        // };
         int[][][] datosUniversidad = {
-        // 5 carreras 4 cursos 2 huecos para hombres y mujeres
-        { { 17, 21 }, { 19, 21 }, { 18, 21 }, { 20, 17 } },
-        { { 19, 17 }, { 21, 17 }, { 19, 17 }, { 17, 21 } },
-        { { 19, 18 }, { 17, 18 }, { 21, 19 }, { 18, 18 } },
-        { { 19, 17 }, { 17, 21 }, { 21, 18 }, { 18, 20 } },
-        { { 20, 17 }, { 17, 18 }, { 17, 24 }, { 17, 21 } }
+                // 5 carreras 4 cursos 2 huecos para hombres y mujeres
+                { { 17, 21 }, { 19, 21 }, { 18, 21 }, { 20, 17 } },
+                { { 19, 17 }, { 21, 17 }, { 19, 17 }, { 17, 21 } },
+                { { 19, 18 }, { 17, 18 }, { 21, 19 }, { 18, 18 } },
+                { { 19, 17 }, { 17, 21 }, { 21, 18 }, { 18, 20 } },
+                { { 20, 17 }, { 17, 18 }, { 17, 24 }, { 17, 21 } }
         };
         // Listado de cuantos alumnos hay en cada grado
         for (int i = 0; i < datosUniversidad.length; i++) {
@@ -321,14 +323,35 @@ public class SufiArrays {
             for (int j = 0; j < datosUniversidad[j].length; j++) {
                 int chicos = datosUniversidad[i][j][0];
                 int chicas = datosUniversidad[i][j][1];
-                if (Math.abs(chicos-chicas) > difMaxima) {
-                    difMaxima = Math.abs(chicos-chicas);
+                if (Math.abs(chicos - chicas) > difMaxima) {
+                    difMaxima = Math.abs(chicos - chicas);
                     gradoDifMaxima = i;
                     cursoDifMaxima = j;
                 }
             }
         }
-        System.out.printf("Clase de diferencia maxima: %s de %s\nDiferencia maxima: %d", cursoStrings[cursoDifMaxima], gradosStrings[gradoDifMaxima], difMaxima);
+        System.out.printf("Clase de diferencia maxima: %s de %s\nDiferencia maxima: %d", cursoStrings[cursoDifMaxima],
+                gradosStrings[gradoDifMaxima], difMaxima);
+    }
+
+    public static void pruebaArrayList() {
+        // Pide numeros hasta que pongamos cero
+        // Se iran guardndo en un arraylist
+        Scanner teclado = new Scanner(System.in);
+        int num = 1;
+        ArrayList<Integer> numeroArrayList = new ArrayList<Integer>(10);
+        System.out.println("Para salir introduce un 0");
+
+        do {
+            System.out.print("Número entero:");
+            num = teclado.nextInt();
+            if (!numeroArrayList.contains(num)) {
+                numeroArrayList.add(num); 
+            }
+        } while (num != 0);
+        numeroArrayList.remove(Integer.valueOf(0));
+        System.out.println("ArrayList: " + numeroArrayList);
+        teclado.close();
     }
 
     // // Array demonstrations

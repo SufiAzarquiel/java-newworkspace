@@ -299,25 +299,23 @@ public class ArrayHomework {
     /*
      * Ejercicio 9: Programa que mezcla dos arrays ordenados de N elementos,
      * consiguiendo un
-     * array de N*2 elementos igualmente ordenados.
+     * array de N*2 elementos ordenados.
      */
     public void arrEjer9() {
+        final int SIZE = 5;
         // two arrays of 5 elements
-        int[] array1 = randomIntArray(5, 10);
-        int[] array2 = randomIntArray(5, 10);
+        int[] array1 = randomIntArray(SIZE, 10);
+        int[] array2 = randomIntArray(SIZE, 10);
         // sort arrays
         Arrays.sort(array1);
         Arrays.sort(array2);
 
         // Código principal
-        int[] array3 = new int[10];
-        for (int i = 0; i < array3.length; i++) {
-            if (i < 5) {
-                array3[i] = array1[i];
-            } else {
-                array3[i] = array2[i % 5];
-            }
+        int[] array3 = Arrays.copyOf(array1, SIZE*2);
+        for (int i = 0; i < SIZE; i++) {
+            array3[i + SIZE] = array2[i];
         }
+        Arrays.sort(array3);
 
         // Print arrays
         System.out.println("Array 3: " + Arrays.toString(array3));
@@ -337,11 +335,11 @@ public class ArrayHomework {
 
         // Código principal
         for (int i = 0; i < array5x5.length; i++) {
-            for (int k = 0; k < array5x5[i].length; k++) {
-                if (k + i <= 4) {
-                    array5x5[i][k] = k + i;
+            for (int j = 0; j < array5x5[i].length; j++) {
+                if (i + j <= 4) {
+                    array5x5[i][j] = i + j;
                 } else {
-                    array5x5[i][k] = 4 - (k + i) % 4;
+                    array5x5[i][j] = 4 - (i + j) % 4;
                 }
             }
         }
@@ -349,10 +347,7 @@ public class ArrayHomework {
 
         // Print array
         for (int i = 0; i < array5x5.length; i++) {
-            for (int k = 0; k < array5x5[i].length; k++) {
-                System.out.print(array5x5[i][k] + " ");
-            }
-            System.out.println();
+            System.out.println(Arrays.toString(array5x5[i]));
         }
     }
 
