@@ -1,6 +1,7 @@
 package com.github.sufiazarquiel.workspace;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Random;
@@ -400,26 +401,26 @@ public class ArrayHomework {
     public void arrEjer12() {
         // Variables
         int num = 0;
-        int[] intArray = new int[1];
+        //int[] intArray = new int[1];
+        ArrayList<Integer> intArray = new ArrayList<Integer>(1);
 
         // Leer lo que teclea el usuario hasta que introduzca -1
         Scanner teclado = new Scanner(System.in);
         System.out.print("Introduce un número: ");
         num = teclado.nextInt();
-        intArray[0] = num;
+        intArray.add(num);
         do {
             System.out.print("Introduce un número: ");
             num = teclado.nextInt();
             if (num == -1) {
                 break;
             }
-            intArray = Arrays.copyOf(intArray, intArray.length + 1);
-            intArray[intArray.length - 1] = num;
+            intArray.add(num);
         } while (true);
         teclado.close();
 
         // Print array
-        System.out.println(Arrays.toString(intArray));
+        System.out.println(intArray);
     }
 
     /*
@@ -505,18 +506,18 @@ public class ArrayHomework {
 
         // Ask user for coordinate
         String inputMismatchString = "Introduce un numero entero del 0 al 5.";
-        int userX = 0, userY = 0;
+        int x = 0, y = 0;
         System.out.println("Introduce una coordenada");
         Scanner teclado = new Scanner(System.in);
         try {
             System.out.print("x: ");
-            userX = teclado.nextInt();
-            if (userX < 0 || userX > 5) {
+            x = teclado.nextInt();
+            if (x < 0 || x > 5) {
                 throw new InputMismatchException(inputMismatchString);
             }
             System.out.print("y: ");
-            userY = teclado.nextInt();
-            if (userY < 0 || userY > 5) {
+            y = teclado.nextInt();
+            if (y < 0 || y > 5) {
                 throw new InputMismatchException(inputMismatchString);
             }
         } catch (Exception InputMismatchException) {
@@ -528,33 +529,33 @@ public class ArrayHomework {
 
         // Check if mine is in user's chosen position
         int minesAround = 0;
-        if (array5x5[userY][userX] == 1) {
+        if (array5x5[y][x] == 1) {
             System.out.println("MINA");
             System.exit(0);
         } else {
             // Count number of mines around player's position
-            if (userY > 0 && userX > 0 && array5x5[userY - 1][userX - 1] == 1) {
+            if (y > 0 && x > 0 && array5x5[y - 1][x - 1] == 1) {
                 minesAround++;
             }
-            if (userY > 0 && array5x5[userY - 1][userX] == 1) {
+            if (y > 0 && array5x5[y - 1][x] == 1) {
                 minesAround++;
             }
-            if (userY > 0 && userX < 4 && array5x5[userY - 1][userX + 1] == 1) {
+            if (y > 0 && x < 4 && array5x5[y - 1][x + 1] == 1) {
                 minesAround++;
             }
-            if (userX > 0 && array5x5[userY][userX - 1] == 1) {
+            if (x > 0 && array5x5[y][x - 1] == 1) {
                 minesAround++;
             }
-            if (userX < 4 && array5x5[userY][userX + 1] == 1) {
+            if (x < 4 && array5x5[y][x + 1] == 1) {
                 minesAround++;
             }
-            if (userY < 4 && userX > 0 && array5x5[userY + 1][userX - 1] == 1) {
+            if (y < 4 && x > 0 && array5x5[y + 1][x - 1] == 1) {
                 minesAround++;
             }
-            if (userY < 4 && array5x5[userY + 1][userX] == 1) {
+            if (y < 4 && array5x5[y + 1][x] == 1) {
                 minesAround++;
             }
-            if (userY < 4 && userX < 4 && array5x5[userY + 1][userX + 1] == 1) {
+            if (y < 4 && x < 4 && array5x5[y + 1][x + 1] == 1) {
                 minesAround++;
             }
         }

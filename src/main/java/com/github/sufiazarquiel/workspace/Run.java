@@ -15,9 +15,9 @@ public class Run {
     // Array homework
     public static void main(String[] args) {
         // Run method
-        // ArrayHomework runArrayHomework = new ArrayHomework();
-        // runArrayHomework.arrEjer10();
-        SufiArrays.pruebaArrayList();;
+        ArrayHomework runArrayHomework = new ArrayHomework();
+        runArrayHomework.arrEjer15();
+        //SufiArrays.pruebaArrayList();;
     }
 
     // // String homework
