@@ -109,6 +109,75 @@ public class OOP1Homework {
     }
 
     // Search for dots in a string. Make the first word after it start with an
-    // uppercase letter;
-    
+    // uppercase letter
+    public static String quitaFaltas(String inputString) {
+        String[] words = inputString.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].contains(".") && i + 1 < words.length) {
+                words[i + 1] = words[i + 1].substring(0, 1).toUpperCase() + words[i + 1].substring(1);
+            }
+        }
+        return String.join(" ", words);
+    }
+
+    // Given a number return it reversed
+    public static int reversed(int number) {
+        String numberString = String.valueOf(number);
+        int resultado = 0;
+        for (int i = numberString.length() - 1; i >= 0; i--) {
+            resultado += Integer.valueOf(numberString.substring(i, i + 1)) * Math.pow(10, i);
+        }
+        return resultado;
+    }
+
+    // Find the greatest common divisor of two ints
+    public static int mcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return mcd(b, a % b);
+    }
+
+    // Transform a number from decimal to roman
+    public static String toRoman(int number) {
+        String resultado = "";
+        // IVXLC
+        while (number > 0) {
+            if (number >= 90) {
+                resultado += "XC";
+                number -= 90;
+            } else if (number >= 50) {
+                resultado += "L";
+                number -= 50;
+            } else if (number >= 40) {
+                resultado += "XL";
+                number -= 40;
+            } else if (number >= 10) {
+                resultado += "X";
+                number -= 10;
+            } else if (number >= 9) {
+                resultado += "IX";
+                number -= 9;
+            } else if (number >= 5) {
+                resultado += "V";
+                number -= 5;
+            } else if (number == 4) {
+                resultado += "IV";
+                number -= 4;
+            } else if (number >= 1) {
+                resultado += "I";
+                number -= 1;
+            }
+        }
+        return resultado;
+    }
+
+    // Generic Fibonnaci method
+    public static int Fibonnaci(int i) {
+        if (i == 0 || i == 1) {
+            return i;
+        } else {
+            return Fibonnaci(i - 1) + Fibonnaci(i - 2);
+        }
+    }
 }

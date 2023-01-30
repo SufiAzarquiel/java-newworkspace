@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
  * Unit-level testing for {@link Run} object.
  */
 public class RunTest {
-    
     @Test
     public void classTest() {
         Run oRun = new Run();
