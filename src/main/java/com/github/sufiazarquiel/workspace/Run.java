@@ -15,9 +15,12 @@ public class Run {
     // Array homework
     public static void main(String[] args) {
         // Run method
-        ArrayHomework runArrayHomework = new ArrayHomework();
-        runArrayHomework.arrEjer15();
-        //SufiArrays.pruebaArrayList();;
+        StringBuilder str = new StringBuilder("Buenos dias");
+        StringBuilder resultado;
+        resultado = SufiOOP1.endDot(str);
+        System.out.println(resultado);
+        System.out.println(str);
+
     }
 
     // // String homework
