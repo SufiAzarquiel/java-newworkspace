@@ -86,13 +86,4 @@ public class SufiOOP1 {
         StringBuilder resultado = new StringBuilder(inpStringBuilder);
         return resultado.append(". (This is the copy)");
     }
-
-    // Given a string, return it reversed
-    public static String reverse(String inputString) {
-        String reversed = "";
-        for (int i = inputString.length() - 1; i >= 0; i--) {
-            reversed += inputString.charAt(i);
-        }
-        return reversed;
-    }
 }

@@ -1,18 +1,6 @@
 package com.github.sufiazarquiel.workspace;
 
 public class Run {
-
-    private int value;
-
-    public Run() {
-        this.value = 0;
-    }
-
-    public int getValue() {
-        return this.value;
-    }
-
-    // Array homework
     public static void main(String[] args) {
         // Run method
         StringBuilder str = new StringBuilder("Buenos dias");
@@ -22,15 +10,22 @@ public class Run {
         System.out.println(str);
 
     }
-
-    // // String homework
-    // public static void main(String[] args) {
-    //     StringHomework.runStr();
-    // }
-
-    // // Array demonstrations
-    // public static void main(String[] args) {
-    //     // Run method
-    //     grades2DArray();
-    // }
 }
+
+
+// package com.github.sufiazarquiel.workspace;
+
+// import static org.junit.jupiter.api.Assertions.assertEquals;
+// import org.junit.jupiter.api.Test;
+
+// /**
+//  * Unit-level testing for {@link Run} object.
+//  */
+// public class RunTest {
+    
+//     @Test
+//     public void classTest() {
+//         Run oRun = new Run();
+//         assertEquals(0, oRun.getValue());
+//     }
+// }
