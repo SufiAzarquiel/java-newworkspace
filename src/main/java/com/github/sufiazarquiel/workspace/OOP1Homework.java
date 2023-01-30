@@ -20,7 +20,7 @@ public class OOP1Homework {
     public static long factorial(int num) {
         if (num == 0) {
             return -2;
-        } else if ( num < 0 ) {
+        } else if (num < 0) {
             return -1;
         } else {
             long result = 1;
@@ -33,23 +33,23 @@ public class OOP1Homework {
 
     public static int fecha(int dia, int mes) {
         int[][] mesesDias = {
-            {1, 31},
-            {2, 28},
-            {3, 31},
-            {4, 30},
-            {5, 31},
-            {6, 30},
-            {7, 31},
-            {8, 31},
-            {9, 30},
-            {10, 31},
-            {11, 30},
-            {12, 31}
+                { 1, 31 },
+                { 2, 28 },
+                { 3, 31 },
+                { 4, 30 },
+                { 5, 31 },
+                { 6, 30 },
+                { 7, 31 },
+                { 8, 31 },
+                { 9, 30 },
+                { 10, 31 },
+                { 11, 30 },
+                { 12, 31 }
         };
         if (dia < 0 || mes < 0 || mes > 12) {
             System.out.println("No existe un dia o mes correspondiente a ese numero.");
             return -1;
-        } else if (mesesDias[mes-1][1] < dia) {
+        } else if (mesesDias[mes - 1][1] < dia) {
             System.out.println("No existe un dia correspondiente a ese numero.");
             return -1;
         }
@@ -107,4 +107,8 @@ public class OOP1Homework {
         }
         return resultado;
     }
+
+    // Search for dots in a string. Make the first word after it start with an
+    // uppercase letter;
+    
 }
