@@ -11,5 +11,7 @@ public class RunTest {
     public void classTest() {
         Run oRun = new Run();
         assertEquals(0, oRun.getValue());
+        assertEquals(12.153, OOP1Homework.redondear(12.153123, 3));
+        assertEquals(123.152, OOP1Homework.redondear(123.152, 4));
     }
 }

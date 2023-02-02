@@ -1,5 +1,9 @@
 package com.github.sufiazarquiel.workspace;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 public class OOP1Homework {
     public static boolean esVocal(String s) {
         if ("AIUEOaiueo".contains(String.valueOf(s.charAt(0)))) {
@@ -7,14 +11,18 @@ public class OOP1Homework {
         } else {
             return false;
         }
+        // Can also be done like this:
+        /*
+         * "AIUEOaiueo".indexOf(s.charAt(0)) >= 0
+         */
     }
 
     public static double grados(double celsius) {
         return 9 * celsius / 5 + 32;
     }
 
-    public static double redondear(float num, int decimalPlaces) {
-        return Double.parseDouble(String.format("%.3f", num));
+    public static double redondear(double num, int decimalPlaces) {
+        return Math.round(num * Math.pow(10, decimalPlaces)) / Math.pow(10, decimalPlaces);
     }
 
     public static long factorial(int num) {
@@ -141,6 +149,10 @@ public class OOP1Homework {
     // Transform a number from decimal to roman
     public static String toRoman(int number) {
         String resultado = "";
+        if (number > 99 || number < 1) {
+            return "El numero debe estar entre 1 y 99";
+        }
+
         // IVXLC
         while (number > 0) {
             if (number >= 90) {
@@ -179,5 +191,99 @@ public class OOP1Homework {
         } else {
             return Fibonnaci(i - 1) + Fibonnaci(i - 2);
         }
+    }
+
+    // Create 2d array like this:
+    // 11 12 13 14 15
+    // 21 22 23 24 25
+    // 31 32 33 34 35
+    public static int[][] array3x5() {
+        int[][] array3x5 = new int[3][5];
+        for (int i = 0; i < array3x5.length; i++) {
+            for (int j = 0; j < array3x5[i].length; j++) {
+                array3x5[i][j] = 10 * (i + 1) + (j + 1);
+            }
+        }
+        return array3x5;
+    }
+
+    // Insert a given value at a given position on a given array, move the other
+    // elements to the right
+    public static int[] insert(int value, int[] array, int position) {
+        int[] result = new int[array.length + 1];
+        result[position] = value;
+        for (int i = 0; i < position; i++) {
+            result[i] = array[i];
+        }
+        for (int i = position + 1; i < result.length; i++) {
+            result[i] = array[i - 1];
+        }
+        return result;
+    }
+
+    // Do the same as the above, but keeping the original length
+    public static int[] pushInsert(int value, int[] array, int position) {
+        int[] result = insert(value, array, position);
+        result = Arrays.copyOf(result, result.length - 1);
+        return result;
+    }
+
+    /*
+     * Performs a method called "sequence" that performs a search for the longest
+     * increasing
+     * sequence in increasing order within an array of integers. The
+     * method shall return both the position of the first component of the sequence
+     * and its size.
+     */
+    public static int[] sequence(int[] array) {
+        int maxSize = 1;
+        int currentSize = 0;
+        int chainStart = 0;
+        for (int i = 1; i < array.length; i++) {
+            while (i < array.length && array[i - 1] < array[i]) {
+                currentSize++;
+                i++;
+            }
+            if (currentSize >= maxSize) {
+                maxSize = currentSize + 1;
+                chainStart = i - currentSize - 1;
+            }
+            currentSize = 0;
+        }
+        int[] result = { chainStart, maxSize };
+        return result;
+    }
+
+    /*
+     * Given a vector of integers, write a method that orders the
+     * elements of the vector in such a way that the even numbers appear before the
+     * the odd numbers. Also, the even numbers must be ordered accordingly in
+     * ascending order, while odd numbers should be
+     * sorted in descending order.
+     */
+    public static int[] sortEvenOdd(int[] array) {
+        ArrayList<Integer> evenIntegers = new ArrayList<Integer>(3);
+        ArrayList<Integer> oddIntegers = new ArrayList<Integer>(3);
+        int j = 0, k = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] % 2 == 0) {
+                evenIntegers.add(j, array[i]);
+                j++;
+            } else {
+                oddIntegers.add(k, array[i]);
+                k++;
+            }
+        }
+        evenIntegers.sort(null);
+        Collections.sort(oddIntegers, Collections.reverseOrder());
+        int combinedSize = evenIntegers.size() + oddIntegers.size();
+        int[] result = new int[combinedSize];
+        for (int i = 0; i < evenIntegers.size(); i++) {
+            result[i] = evenIntegers.get(i);
+        }
+        for (int i = evenIntegers.size(); i < combinedSize; i++) {
+            result[i] = oddIntegers.get(i);
+        }
+        return result;
     }
 }
