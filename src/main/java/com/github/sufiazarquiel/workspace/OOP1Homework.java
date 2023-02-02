@@ -264,26 +264,52 @@ public class OOP1Homework {
     public static int[] sortEvenOdd(int[] array) {
         ArrayList<Integer> evenIntegers = new ArrayList<Integer>(3);
         ArrayList<Integer> oddIntegers = new ArrayList<Integer>(3);
-        int j = 0, k = 0;
+        int evens = 0, odds = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 == 0) {
-                evenIntegers.add(j, array[i]);
-                j++;
+                evenIntegers.add(evens, array[i]);
+                evens++;
             } else {
-                oddIntegers.add(k, array[i]);
-                k++;
+                oddIntegers.add(odds, array[i]);
+                odds++;
             }
         }
+        // Sort even array normally and odd array reversed
         evenIntegers.sort(null);
         Collections.sort(oddIntegers, Collections.reverseOrder());
-        int combinedSize = evenIntegers.size() + oddIntegers.size();
+
+        // Create an array that has the combined length of the even and odd arrays
+        // Note that j = evenIntegers.size and k = oddIntegers.size
+        int combinedSize = evens + odds;
         int[] result = new int[combinedSize];
-        for (int i = 0; i < evenIntegers.size(); i++) {
+        for (int i = 0; i < evens; i++) {
             result[i] = evenIntegers.get(i);
         }
-        for (int i = evenIntegers.size(); i < combinedSize; i++) {
-            result[i] = oddIntegers.get(i);
+        int odd_i = 0;
+        for (int i = evens; i < combinedSize; i++) {
+            // Need a new index to start adding from position 0 of odd array
+            result[i] = oddIntegers.get(odd_i);
+            odd_i++;
         }
         return result;
+    }
+
+    public static int[][] flipDiag(int[][] squareArray) {
+        ArrayList<Integer> diagonal = new ArrayList<Integer>(squareArray.length);
+        for (int i = 0; i < squareArray.length; i++) {
+            for (int j = 0; j < squareArray[i].length; j++) {
+                if (i == j) {
+                    diagonal.add(squareArray[i][j]);
+                }
+            }
+        }
+        for (int i = 0; i < squareArray.length; i++) {
+            for (int j = 0; j < squareArray[i].length; j++) {
+                if (i == j) {
+                    squareArray[i][j] = diagonal.get(3 - i);
+                }
+            }
+        }
+        return squareArray;
     }
 }
