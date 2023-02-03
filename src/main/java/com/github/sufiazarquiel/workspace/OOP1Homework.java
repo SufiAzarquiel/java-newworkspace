@@ -312,4 +312,118 @@ public class OOP1Homework {
         }
         return squareArray;
     }
+
+    public static int[] flipHalfs(int[] array) {
+        int[] result = Arrays.copyOf(array, array.length);
+        for (int i = 0; i < array.length / 2; i++) {
+            result[i] = array[array.length / 2 - i - 1];
+        }
+        int j = 0;
+        int middle = array.length % 2 == 0 ? array.length / 2 : array.length / 2 + 1;
+        for (int i = middle; i < array.length; i++) {
+            result[i] = array[array.length - j - 1];
+            j++;
+        }
+        return result;
+    }
+
+    public static boolean has4DigitsFrom(String str, int startIndex) {
+        for (int i = startIndex; i < 4; i++) {
+            if (Character.isAlphabetic(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean esMatriculaValida(String matricula) {
+        // Si la matricula empieza por una cifra
+        if (Character.isDigit(matricula.charAt(0))) {
+            // Comprobar que tiene longitud válida
+            if (matricula.length() != 7) {
+                return false;
+            }
+            // Comprobar que empieza con cuatro cifras
+            if (!has4DigitsFrom(matricula, 0)) {
+                return false;
+            }
+            // Comprobar que termina con tres letras
+            for (int i = 1; i <= 3; i++) {
+                if (Character.isDigit(matricula.charAt(matricula.length() - i))) {
+                    return false;
+                }
+            }
+        } else {
+            // El resto de condiciones se resumen en que es una matricula valida si:
+            // Empieza por una o dos letras, seguida(s) de 4 cifras | no empieza por tres
+            // letras
+            // Acaba en una o dos letras | no acaba en 3 letras
+
+            if (Character.isAlphabetic(matricula.charAt(2))) {
+                return false;
+            }
+            if (Character.isAlphabetic(matricula.charAt(matricula.length() - 3))) {
+                return false;
+            }
+            if (Character.isDigit(matricula.charAt(1))) {
+                if (!has4DigitsFrom(matricula, 1)) {
+                    return false;
+                }
+            }
+            if (Character.isDigit(matricula.charAt(2))) {
+                if (!has4DigitsFrom(matricula, 2)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /*
+     * Create a method that checks if a given string is a valid car plate number.
+     * Valid car plate numbers are of the form:
+     * 4 digits followed by 3 letters
+     * 1 or 2 letters followed by 4 digits followed by 1 or 2 letters
+     */
+    public static boolean checkPlate(String plate) {
+        // Check if the plate is valid
+        if (plate.length() != 7 && plate.length() != 8) {
+            return false;
+        }
+        // Check if the first 4 characters are digits
+        if (has4DigitsFrom(plate, 0)) {
+            // Check if the last 3 characters are letters
+            for (int i = 4; i < plate.length(); i++) {
+                if (Character.isDigit(plate.charAt(i))) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        // Check if the first 2 characters are letters
+        if (Character.isAlphabetic(plate.charAt(0)) && Character.isAlphabetic(plate.charAt(1))) {
+            // Check if the next 4 characters are digits
+            if (has4DigitsFrom(plate, 2)) {
+                // Check if the last 2 characters are letters
+                for (int i = 6; i < plate.length(); i++) {
+                    if (Character.isDigit(plate.charAt(i))) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+        // Check if the first character is a letter
+        if (Character.isAlphabetic(plate.charAt(0))) {
+            // Check if the next 4 characters are digits
+            if (has4DigitsFrom(plate, 1)) {
+                // Check if the last character is a letter
+                if (Character.isAlphabetic(plate.charAt(5))) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
