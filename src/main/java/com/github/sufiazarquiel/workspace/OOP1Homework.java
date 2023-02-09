@@ -1,5 +1,6 @@
 package com.github.sufiazarquiel.workspace;
 
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -325,6 +326,34 @@ public class OOP1Homework {
             j++;
         }
         return result;
+    }
+
+    public static void sieteYMedia() {
+        System.out.println("Juguemos a las siete y media");
+        int[] cartas = {
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] baraja = new int[40];
+        for (int i = 0; i < baraja.length; i++) {
+            baraja[i] = cartas[(int) (Math.random()*10)];
+        }
+        System.out.println(Arrays.toString(baraja));
+        System.out.println("¿Quieres una carta? (s/n)");
+        Scanner teclado = new Scanner(System.in);
+        String respuesta = teclado.nextLine();
+        int suma = 0;
+        while (respuesta.equals("s")) {
+            int carta = baraja[(int) (Math.random()*40)];
+            System.out.println("Has sacado un " + carta);
+            suma += carta;
+            if (suma > 7.5) {
+                System.out.println("Te has pasado");
+                break;
+            }
+            System.out.println("¿Quieres otra carta? (s/n)");
+            respuesta = teclado.nextLine();
+        }
+        System.out.println("Tu puntuación es " + suma);
+        teclado.close();
     }
 
     public static boolean has4DigitsFrom(String str, int startIndex) {

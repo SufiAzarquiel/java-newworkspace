@@ -27,7 +27,7 @@ public class Run {
         System.out.println("Es la sexta matricula valida?" + OOP1Homework.compruebaMatricula(matricula6));
         String matricula7 = "56479HY";
         System.out.println("Es la septima matricula valida?" + OOP1Homework.compruebaMatricula(matricula7));*/
-        System.out.println(OOP1Homework.Fibonnaci(45));
+            OOP1Homework.sieteYMedia();
     }
 
     public int getValue() {
