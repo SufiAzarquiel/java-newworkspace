@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace;
+package com.github.sufiazarquiel.workspace.OOP;
 
 public class BankAccount {
     // Attributes
