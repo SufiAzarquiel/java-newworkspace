@@ -12,23 +12,23 @@ public class Stock {
     }
 
     // Methods
-    public void addProduct(Producto producto) {
+    public void añadir(Producto producto) {
         productos.add(producto);
     }
 
-    public void removeProduct(Producto producto) {
+    public void borrar(Producto producto) {
         productos.remove(producto);
     }
 
-    public int searchProduct(Producto producto) {
+    public int buscar(Producto producto) {
         return productos.indexOf(producto);
     }
 
-    public Producto searchProduct(int index) {
+    public Producto buscar(int index) {
         return productos.get(index);
     }
 
-    public void outOfStock() {
+    public void productosAgotados() {
         for (Producto elemento : productos) {
             if (elemento.getCantidad() == 0) {
                 System.out.println("Out of stock: " + elemento.getDescripcion());
@@ -36,9 +36,9 @@ public class Stock {
         }
     }
 
-    public void underMinimum() {
+    public void productosBajoMinimos() {
         for (Producto elemento : productos) {
-            if (elemento.getCantidad() <= elemento.getMinimo()) {
+            if (elemento.getCantidad() <= elemento.getMinimo() && elemento.getCantidad() > 0) {
                 System.out.println("Bajo mínimos: " + elemento.getDescripcion());
             }
         }
