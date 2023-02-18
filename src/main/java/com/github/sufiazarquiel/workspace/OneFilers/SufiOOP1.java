@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace;
+package com.github.sufiazarquiel.workspace.OneFilers;
 
 public class SufiOOP1 {
     // Sum of two double values
