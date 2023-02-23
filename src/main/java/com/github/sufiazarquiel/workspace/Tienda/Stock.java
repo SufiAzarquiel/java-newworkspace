@@ -24,24 +24,33 @@ public class Stock {
         return productos.indexOf(producto);
     }
 
-    public Producto buscar(int index) {
-        return productos.get(index);
-    }
-
-    public void productosAgotados() {
+    public Producto get(int codigoProducto) {
         for (Producto elemento : productos) {
-            if (elemento.getCantidad() == 0) {
-                System.out.println("Out of stock: " + elemento.getDescripcion());
+            if (elemento.getCodigo() == codigoProducto) {
+                return elemento;
             }
         }
+        return null;
     }
 
-    public void productosBajoMinimos() {
-        for (Producto elemento : productos) {
-            if (elemento.getCantidad() <= elemento.getMinimo() && elemento.getCantidad() > 0) {
-                System.out.println("Bajo mínimos: " + elemento.getDescripcion());
+    public ArrayList<Producto> productosAgotados() {
+        ArrayList<Producto> agotados = new ArrayList<Producto>();
+        for (Producto producto : productos) {
+            if (producto.getCantidad() == 0) {
+                agotados.add(producto);
             }
         }
+        return agotados;
+    }
+
+    public ArrayList<Producto> productosBajoMinimos() {
+        ArrayList<Producto> bajos = new ArrayList<Producto>();
+        for (Producto producto : productos) {
+            if (producto.getCantidad() <= producto.getMinimo() && producto.getCantidad() > 0) {
+                bajos.add(producto);
+            }
+        }
+        return bajos;
     }
 
     @Override

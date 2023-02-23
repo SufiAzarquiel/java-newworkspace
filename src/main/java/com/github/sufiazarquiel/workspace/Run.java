@@ -1,7 +1,5 @@
 package com.github.sufiazarquiel.workspace;
 
-import java.util.Date;
-
 import com.github.sufiazarquiel.workspace.Tienda.*;
 
 public class Run {
@@ -11,9 +9,7 @@ public class Run {
         Producto naranja = new Producto(3, "Naranja", 7.0f, 15, 4);
 
         Stock stock = new Stock();
-
-        Date hoy = new Date();
-        Factura factura = new Factura(hoy, 1);
+        Factura factura = new Factura();
 
         stock.añadir(manzana);
         stock.añadir(pera);
@@ -22,12 +18,12 @@ public class Run {
         // Buy 5 apples, 1 pear and 2 oranges
         System.out.println("Comprando 5 manzanas, 1 pera y 2 naranjas...");
         LineaFactura lineaFactura = new LineaFactura(1, manzana, 12, manzana.getPrecio());
-        factura.getLineasFactura().add(lineaFactura);
+        factura.addLineaFactura(lineaFactura);
         lineaFactura = new LineaFactura(2, pera, 2, pera.getPrecio());
-        factura.getLineasFactura().add(lineaFactura);
+        factura.addLineaFactura(lineaFactura);
         lineaFactura = new LineaFactura(3, naranja, 2, naranja.getPrecio());
-        factura.getLineasFactura().add(lineaFactura);
-        System.out.println("Factura resultante: \n" + factura.getLineasFactura());
+        factura.addLineaFactura(lineaFactura);
+        System.out.println(factura);
 
         // Print out of stock and low stock products
         stock.productosAgotados(); // Expected: Out of stock: Manzana

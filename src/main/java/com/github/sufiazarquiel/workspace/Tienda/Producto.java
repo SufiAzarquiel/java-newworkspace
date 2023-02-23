@@ -17,11 +17,12 @@ public class Producto {
         this.minimo = minimo;
     }
 
-    public Producto(int codigo, String descripcion, float precio) {
+    public Producto(int codigo, String descripcion) {
         this.codigo = codigo;
         this.descripcion = descripcion;
-        this.precio = precio;
+        this.precio = 0.0f;
         this.cantidad = 0;
+        this.minimo = 0;
     }
 
     // Methods
