@@ -1,33 +1,29 @@
 package com.github.sufiazarquiel.workspace;
 
-import com.github.sufiazarquiel.workspace.Tienda.*;
+import java.util.ArrayList;
+
+import com.github.sufiazarquiel.workspace.Empresa.*;
 
 public class Run {
     public static void main(String[] args) {
-        Producto manzana = new Producto(1, "Manzana", 10.0f, 17, 5);
-        Producto pera = new Producto(2, "Pera", 5.0f, 2, 1);
-        Producto naranja = new Producto(3, "Naranja", 7.0f, 15, 4);
+        // Cliente
+        Cliente cl = new Cliente("Pedro", "654987L", 45, 12365);
+        // Empleados
+        Empleado em = new Empleado("Paco", "654997K", 28, 1200);
+        Empleado em2 = new Empleado("Jesus", "656987S", 40, 1236);
+        // Jefe
+        Jefe jf = new Jefe("Julio", "665987Y", 55, 1600, "S65487TM");
 
-        Stock stock = new Stock();
-        Factura factura = new Factura();
+        // Arraylist containing all people
+        ArrayList<Persona> gente = new ArrayList<Persona>();
+        gente.add(cl);
+        gente.add(em);
+        gente.add(em2);
+        gente.add(jf);
 
-        stock.añadir(manzana);
-        stock.añadir(pera);
-        stock.añadir(naranja);
-
-        // Buy 5 apples, 1 pear and 2 oranges
-        System.out.println("Comprando 5 manzanas, 1 pera y 2 naranjas...");
-        LineaFactura lineaFactura = new LineaFactura(1, manzana, 12, manzana.getPrecio());
-        factura.addLineaFactura(lineaFactura);
-        lineaFactura = new LineaFactura(2, pera, 2, pera.getPrecio());
-        factura.addLineaFactura(lineaFactura);
-        lineaFactura = new LineaFactura(3, naranja, 2, naranja.getPrecio());
-        factura.addLineaFactura(lineaFactura);
-        System.out.println(factura);
-
-        // Print out of stock and low stock products
-        stock.productosAgotados(); // Expected: Out of stock: Manzana
-        stock.productosBajoMinimos(); // Expected: Bajo mínimos: Pera
+        for (Persona persona : gente) {
+            System.out.println(persona);
+        }
     }
 
     public int getValue() {

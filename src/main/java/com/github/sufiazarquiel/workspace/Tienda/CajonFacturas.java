@@ -12,7 +12,20 @@ public class CajonFacturas {
         this.facturas = new ArrayList<Factura>();
     }
 
+    public CajonFacturas(ArrayList<Factura> facturas) {
+        this.facturas = facturas;
+    }
+
     // Methods
+    public ArrayList<Factura> getFacturas() {
+        return facturas;
+    }
+
+    @Override
+    public String toString() {
+        return "CajonFacturas [facturas=" + facturas + "]";
+    }
+
     public void añadir(Factura factura) {
         facturas.add(factura);
     }
@@ -26,12 +39,34 @@ public class CajonFacturas {
         return null;
     }
 
-    public Factura buscar(Date fecha) {
+    /**
+     * Busca una factura por su fecha de emisión
+     * 
+     * @param fecha
+     * @return Array de objetos Factura
+     */
+    public ArrayList<Factura> buscar(Date fecha) {
+        ArrayList<Factura> facturasEncontradas = new ArrayList<Factura>();
         for (Factura factura : facturas) {
             if (fecha.equals(factura.getFecha())) {
-                return factura;
+                facturasEncontradas.add(factura);
             }
         }
-        return null;
+        return facturasEncontradas;
     }
+
+    /**
+     * Obtener facturas pendientes de pago
+     * 
+     * @return Array de objetos Factura
+     */
+     public ArrayList<Factura> facturasPendientes() {
+        ArrayList<Factura> facturasPendientes = new ArrayList<Factura>();
+        for (Factura factura : facturas) {
+            if (factura.isPagada() == false) {
+                facturasPendientes.add(factura);
+            }
+        }
+        return facturasPendientes;
+     }
 }
