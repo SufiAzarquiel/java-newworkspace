@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace.OneFilers;
+package com.github.sufiazarquiel.workspace.oneFilers;
 
 import java.util.ArrayList;
 import java.util.Scanner;

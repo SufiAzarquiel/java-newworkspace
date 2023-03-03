@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace.OOP;
+package com.github.sufiazarquiel.workspace.oop;
 
 public class Person {
 

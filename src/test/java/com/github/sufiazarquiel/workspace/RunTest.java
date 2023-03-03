@@ -3,7 +3,7 @@ package com.github.sufiazarquiel.workspace;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-import com.github.sufiazarquiel.workspace.OneFilers.OOP1Homework;
+import com.github.sufiazarquiel.workspace.oneFilers.OOP1Homework;
 
 /**
  * Unit-level testing for {@link Run} object.

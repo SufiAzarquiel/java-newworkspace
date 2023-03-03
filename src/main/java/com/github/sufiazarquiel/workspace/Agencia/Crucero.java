@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace.Agencia;
+package com.github.sufiazarquiel.workspace.agencia;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -76,10 +76,8 @@ public class Crucero {
     public int coste() {
         int coste = 600;
         for (Escala escala : escalas) {
-            if (escala instanceof EscalaOcio) {
-                coste += 100;
-            } else if (escala instanceof EscalaCultural) {
-                coste += 100;
+            coste += 100;
+            if (escala instanceof EscalaCultural) {
                 coste += ((EscalaCultural) escala).getPrecioGuia();
             }
         }

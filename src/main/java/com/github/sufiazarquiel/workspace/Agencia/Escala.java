@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace.Agencia;
+package com.github.sufiazarquiel.workspace.agencia;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace.Restaurante;
+package com.github.sufiazarquiel.workspace.restaurante;
 
 public class Primero extends Plato {
     // Attributes

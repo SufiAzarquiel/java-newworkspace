@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace.Empresa;
+package com.github.sufiazarquiel.workspace.empresa;
 
 public class Staff extends Persona {
     // Attributes

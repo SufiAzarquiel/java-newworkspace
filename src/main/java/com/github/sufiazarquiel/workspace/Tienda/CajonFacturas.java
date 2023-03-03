@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace.Tienda;
+package com.github.sufiazarquiel.workspace.tienda;
 
 import java.util.ArrayList;
 import java.util.Date;

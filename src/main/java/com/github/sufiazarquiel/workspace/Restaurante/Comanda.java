@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace.Restaurante;
+package com.github.sufiazarquiel.workspace.restaurante;
 
 import java.util.ArrayList;
 

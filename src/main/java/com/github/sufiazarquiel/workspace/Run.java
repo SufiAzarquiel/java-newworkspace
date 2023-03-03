@@ -2,7 +2,7 @@ package com.github.sufiazarquiel.workspace;
 
 import java.util.ArrayList;
 
-import com.github.sufiazarquiel.workspace.Empresa.*;
+import com.github.sufiazarquiel.workspace.empresa.*;
 
 public class Run {
     public static void main(String[] args) {
