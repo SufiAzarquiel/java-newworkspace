@@ -1,7 +1,8 @@
-package com.github.sufiazarquiel.workspace.elec;
+package com.github.sufiazarquiel.workspace.electrodomestico;
 
 import java.util.ArrayList;
-import com.github.sufiazarquiel.workspace.elec.Electrodomestico.colores;
+
+import com.github.sufiazarquiel.workspace.electrodomestico.Electrodomestico.colores;
 
 public class Run {
     public static void main(String[] args) {

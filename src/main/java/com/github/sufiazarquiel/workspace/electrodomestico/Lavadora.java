@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace.elec;
+package com.github.sufiazarquiel.workspace.electrodomestico;
 
 public class Lavadora extends Electrodomestico {
     // Attributes

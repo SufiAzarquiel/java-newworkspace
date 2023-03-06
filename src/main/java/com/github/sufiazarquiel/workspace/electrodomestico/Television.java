@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace.elec;
+package com.github.sufiazarquiel.workspace.electrodomestico;
 
 public class Television extends Electrodomestico {
     // Attributes
