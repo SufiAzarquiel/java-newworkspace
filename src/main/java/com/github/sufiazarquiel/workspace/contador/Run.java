@@ -8,8 +8,10 @@ public class Run {
         
         for (int i = 0; i < 5; i++) {
             contadorDecimales.incrementar();
-            contadorEntero.incrementar();
-            contadorLetras.incrementar();
+            for (int j = 0; j < 12; j++) {
+                contadorEntero.incrementar();
+                contadorLetras.incrementar();
+            }
         }
         
         System.out.println(contadorDecimales);
