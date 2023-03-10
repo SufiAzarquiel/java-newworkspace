@@ -12,6 +12,12 @@ public abstract class Estancia {
         this.numeroVentanas = 0;
         this.precio = 0;
     }
+    
+    public Estancia(int metrosCuadrados, int numeroVentanas, int precio) {
+        this.metrosCuadrados = metrosCuadrados;
+        this.numeroVentanas = numeroVentanas;
+        this.precio = precio;
+    }
 
     // Getters and setters
     public int getMetrosCuadrados() {

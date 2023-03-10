@@ -10,6 +10,11 @@ public class Bano extends Estancia {
         this.tieneDucha = false;
     }
 
+    public Bano(int metrosCuadrados, int numeroVentanas, int precio, boolean tieneDucha) {
+        super(metrosCuadrados, numeroVentanas, precio);
+        this.tieneDucha = tieneDucha;
+    }
+
     // Getters and setters
     public boolean isTieneDucha() {
         return tieneDucha;
@@ -22,6 +27,6 @@ public class Bano extends Estancia {
     // Methods
     @Override
     public String toString() {
-        return "Bano [tieneDucha=" + tieneDucha + super.toString() + "]";
+        return "\nBano [tieneDucha=" + tieneDucha + ", " + super.toString() + "]";
     }
 }

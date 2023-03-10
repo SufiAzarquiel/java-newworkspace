@@ -10,6 +10,11 @@ public class Dormitorio extends Estancia {
         this.numeroCamas = 0;
     }
 
+    public Dormitorio(int metrosCuadrados, int numeroVentanas, int precio, int numeroCamas) {
+        super(metrosCuadrados, numeroVentanas, precio);
+        this.numeroCamas = numeroCamas;
+    }
+
     // Getters and setters
     public int getNumeroCamas() {
         return numeroCamas;
@@ -22,6 +27,6 @@ public class Dormitorio extends Estancia {
     // Methods
     @Override
     public String toString() {
-        return "Dormitorio [numeroCamas=" + numeroCamas + super.toString() + "]";
+        return "\nDormitorio [numeroCamas=" + numeroCamas + ", " + super.toString() + "]";
     }
 }

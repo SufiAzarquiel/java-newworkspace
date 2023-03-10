@@ -33,6 +33,10 @@ public class Vivienda {
         estancias.remove(estancia);
     }
 
+    public Estancia getEstancia(int index) {
+        return estancias.get(index);
+    }
+
     public String imprimirVivienda() {
         return "Vivienda [estancias=" + estancias + "]";
     }

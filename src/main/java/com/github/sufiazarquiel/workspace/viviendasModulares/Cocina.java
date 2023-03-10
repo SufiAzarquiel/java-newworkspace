@@ -10,6 +10,11 @@ public class Cocina extends Estancia {
         this.numeroElectrodomesticos = 0;
     }
 
+    public Cocina(int metrosCuadrados, int numeroVentanas, int precio, int numeroElectrodomesticos) {
+        super(metrosCuadrados, numeroVentanas, precio);
+        this.numeroElectrodomesticos = numeroElectrodomesticos;
+    }
+
     // Getters and setters
     public int getNumeroElectrodomesticos() {
         return numeroElectrodomesticos;
@@ -22,6 +27,6 @@ public class Cocina extends Estancia {
     // Methods
     @Override
     public String toString() {
-        return "cocina [numeroElectrodomesticos=" + numeroElectrodomesticos + super.toString() + "]";
+        return "\ncocina [numeroElectrodomesticos=" + numeroElectrodomesticos+ ", " + super.toString() + "]";
     }
 }
