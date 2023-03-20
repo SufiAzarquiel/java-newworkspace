@@ -1,32 +1,60 @@
 package com.github.sufiazarquiel.workspace;
 
-import java.util.ArrayList;
-
-import com.github.sufiazarquiel.workspace.empresa.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Run {
-    public static void main(String[] args) {
-        // Cliente
-        Cliente cl = new Cliente("Pedro", "654987L", 45, 12365);
-        // Empleados
-        Empleado em = new Empleado("Paco", "654997K", 28, 1200);
-        Empleado em2 = new Empleado("Jesus", "656987S", 40, 1236);
-        // Jefe
-        Jefe jf = new Jefe("Julio", "665987Y", 55, 1600, "S65487TM");
+    // Attributes
+    private int a, b;
 
-        // Arraylist containing all people
-        ArrayList<Persona> gente = new ArrayList<Persona>();
-        gente.add(cl);
-        gente.add(em);
-        gente.add(em2);
-        gente.add(jf);
-
-        for (Persona persona : gente) {
-            System.out.println(persona);
-        }
+    // Constructors
+    public Run() {
+        this.a = 0;
+        this.b = 0;
     }
 
-    public int getValue() {
-        return 0;
+    public Run(int a, int b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    // Getters and Setters
+    public int getA() {
+        return a;
+    }
+
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    public int getB() {
+        return b;
+    }
+
+    public void setB(int b) {
+        this.b = b;
+    }
+
+    // ToString
+    @Override
+    public String toString() {
+        return "Run object [a=" + a + ", b=" + b + "]";
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        Run obj = new Run();
+        try {
+            BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+            obj.setA(Integer.parseInt(teclado.readLine()));
+            teclado.close();
+        } catch (NumberFormatException e) {
+            System.out.println("Formato numérico incorrecto\n" + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error en el teclado\n" + e.getMessage());
+        } finally {
+            System.out.println("Final value: " + obj.getA());
+        }
     }
 }
