@@ -1,17 +1,24 @@
 package com.github.sufiazarquiel.workspace;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class Run {
+    // Main method
+    public static void main(String[] args) {
+       System.out.println("Hi");
+    }
+
     // Attributes
     private int a, b;
+    private ArrayList<Integer> arraylist;
+    private int[] array;
 
     // Constructors
     public Run() {
         this.a = 0;
         this.b = 0;
+        this.arraylist = new ArrayList<Integer>();
+        this.array = new int[8];
     }
 
     public Run(int a, int b) {
@@ -36,25 +43,47 @@ public class Run {
         this.b = b;
     }
 
+    
+    public ArrayList<Integer> getArraylist() {
+        return arraylist;
+    }
+    
+    public void setArraylist(ArrayList<Integer> arraylist) {
+        this.arraylist = arraylist;
+    }
+
+    public int[] getArray() {
+        return array;
+    }
+
+    public void setArray(int[] array) {
+        this.array = array;
+    }
+
+    public int getIntAtArrayList(int index) {
+        return this.arraylist.get(index);
+    }
+
+    public int getIntAtArray(int index) {
+        return this.array[index];
+    }
+    
+    // Methods
+    public void addToArrayList(int a) {
+        this.arraylist.add(a);
+    }
+
+    public void addToArray(int a, int index) {
+        this.array[index] = a;
+    }
+
+    public void removeFromArrayList(int a) {
+        this.arraylist.remove(a);
+    }
+
     // ToString
     @Override
     public String toString() {
         return "Run object [a=" + a + ", b=" + b + "]";
-    }
-
-    // Main method
-    public static void main(String[] args) {
-        Run obj = new Run();
-        try {
-            BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
-            obj.setA(Integer.parseInt(teclado.readLine()));
-            teclado.close();
-        } catch (NumberFormatException e) {
-            System.out.println("Formato numérico incorrecto\n" + e.getMessage());
-        } catch (IOException e) {
-            System.out.println("Error en el teclado\n" + e.getMessage());
-        } finally {
-            System.out.println("Final value: " + obj.getA());
-        }
     }
 }
