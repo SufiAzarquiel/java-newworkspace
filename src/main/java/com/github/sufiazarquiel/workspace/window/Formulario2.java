@@ -21,7 +21,7 @@ public class Formulario2 extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldNombre;
-	private JTextField textFieldEdad;
+	public JTextField textFieldEdad;
 
 	/**
 	 * Launch the application.
@@ -53,59 +53,62 @@ public class Formulario2 extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel.setBounds(47, 32, 72, 26);
 		contentPane.add(lblNewLabel);
-		
+
 		JLabel lblEdad = new JLabel("Edad:");
 		lblEdad.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblEdad.setBounds(47, 81, 72, 26);
 		contentPane.add(lblEdad);
-		
+
 		textFieldNombre = new JTextField();
 		textFieldNombre.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		textFieldNombre.setBounds(129, 32, 253, 26);
 		contentPane.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
-		
+
 		textFieldEdad = new JTextField();
 		textFieldEdad.setEditable(false);
 		textFieldEdad.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		textFieldEdad.setBounds(129, 81, 46, 26);
 		contentPane.add(textFieldEdad);
 		textFieldEdad.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Enviar");
-		btnNewButton.addActionListener(new ActionListener() {
+
+		JButton btnEnviar = new JButton("Enviar");
+		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				enviar();
 			}
 		});
-		btnNewButton.setBounds(172, 227, 89, 23);
-		contentPane.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("...");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		btnEnviar.setBounds(172, 227, 89, 23);
+		contentPane.add(btnEnviar);
+
+		JButton btnTresPuntos = new JButton("...");
+		btnTresPuntos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pulsadoTresPuntos();
 			}
 		});
-		btnNewButton_1.setBounds(188, 81, 32, 27);
-		contentPane.add(btnNewButton_1);
+		btnTresPuntos.setBounds(188, 81, 32, 27);
+		contentPane.add(btnTresPuntos);
 	}
-	
+
 	private void enviar() {
 		try {
 			if (textFieldNombre.getText().isBlank()) {
 				JOptionPane.showMessageDialog(this, "Rellena el campo nombre", "Error", JOptionPane.WARNING_MESSAGE);
 			} else if (textFieldEdad.getText().isBlank()) {
 				JOptionPane.showMessageDialog(this, "Rellena el campo edad", "Error", JOptionPane.WARNING_MESSAGE);
-			} else if (Integer.parseInt(textFieldEdad.getText()) < 0 || Integer.parseInt(textFieldEdad.getText()) > 120){
+			} else if (Integer.parseInt(textFieldEdad.getText()) < 0
+					|| Integer.parseInt(textFieldEdad.getText()) > 120) {
 				JOptionPane.showMessageDialog(this, "Revisa la edad", "Edad un poco rara", JOptionPane.WARNING_MESSAGE);
-			}else {
+			} else {
 				JOptionPane.showMessageDialog(this, "Datos enviados", "Correcto", JOptionPane.PLAIN_MESSAGE);
+				// Si los datos son enviados, se puede cerrar la ventana
+				this.dispose();
 			}
 		} catch (HeadlessException e) {
 			JOptionPane.showMessageDialog(this, "El dialogo se siente huerfano", "Error", JOptionPane.WARNING_MESSAGE);
@@ -113,21 +116,15 @@ public class Formulario2 extends JFrame {
 			JOptionPane.showMessageDialog(this, "Revisa la edad", "Error", JOptionPane.WARNING_MESSAGE);
 		}
 	}
-	
+
 	private void pulsadoTresPuntos() {
-//		String resultado = JOptionPane.showInputDialog(this, "Teclea tu edad:" , "Edad" , JOptionPane.PLAIN_MESSAGE);
-//		textFieldEdad.setText(resultado);
-		
+		// String resultado = JOptionPane.showInputDialog(this, "Teclea tu edad:" ,
+		// "Edad" , JOptionPane.PLAIN_MESSAGE);
+		// textFieldEdad.setText(resultado);
+
 		DialogoElegirEdad miDialogo = new DialogoElegirEdad(this);
-		miDialogo.setLocationRelativeTo(this); //que salga donde estemos
+		miDialogo.setLocationRelativeTo(this); // que salga donde estemos
 		miDialogo.setVisible(true);
 	}
-	
+
 }
-
-
-
-
-
-
-

@@ -25,37 +25,38 @@ public class DialogoElegirEdad extends JDialog {
 
 	/**
 	 * Launch the application.
+	 *
+	 * public static void main(String[] args) {
+	 * try {
+	 * DialogoElegirEdad dialog = new DialogoElegirEdad();
+	 * dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+	 * dialog.setVisible(true);
+	 * } catch (Exception e) {
+	 * e.printStackTrace();
+	 * }
+	 * }
 	 */
-	public static void main(String[] args) {
-		try {
-			DialogoElegirEdad dialog = new DialogoElegirEdad();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Create the dialog.
 	 */
-								//el dialogo recibe quien es su padre en el constructor
+	// el dialogo recibe quien es su padre en el constructor
 	public DialogoElegirEdad(JFrame padre) {
-		super(padre); //lanzo el constructor para que guarde el padre
+		super(padre); // lanzo el constructor para que guarde el padre
 		setTitle("Selecciona la edad");
 		setBounds(100, 100, 260, 238);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		
+
 		slider = new JSlider();
-		
+
 		slider.setValue(0);
 		slider.setMaximum(120);
 		slider.setBounds(21, 104, 200, 26);
 		contentPanel.add(slider);
-		
+
 		lblValor = new JLabel("0");
 		lblValor.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblValor.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -66,7 +67,7 @@ public class DialogoElegirEdad extends JDialog {
 				actualizarValor();
 			}
 		});
-		
+
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -75,7 +76,7 @@ public class DialogoElegirEdad extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						pulsadoOK();
+						pulsadoOK(padre);
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -94,23 +95,21 @@ public class DialogoElegirEdad extends JDialog {
 			}
 		}
 	}
-	
+
 	private void actualizarValor() {
-		this.lblValor.setText( String.valueOf(this.slider.getValue()) );
+		this.lblValor.setText(String.valueOf(this.slider.getValue()));
 	}
-	
+
 	private void pulsadoCancel() {
-//		this.setVisible(false);//oculta el dialogo pero no desaparece, sigue consumiendo recursos
-		this.dispose(); //esto elimina el dialogo
+		// this.setVisible(false);//oculta el dialogo pero no desaparece, sigue
+		// consumiendo recursos
+		this.dispose(); // esto elimina el dialogo
 	}
-	
-	private void pulsadoOK() {
-		//pasar la edad a la ventana padre
-		
-		//cierro el dialogo
+
+	private void pulsadoOK(JFrame padre) {
+		// pasar la edad a la ventana padre
+		((Formulario2) padre).textFieldEdad.setText(String.valueOf(this.slider.getValue()));
+		// cierro el dialogo
 		this.dispose();
 	}
 }
-
-
-
