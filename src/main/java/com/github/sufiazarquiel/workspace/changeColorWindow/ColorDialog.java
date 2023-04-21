@@ -18,7 +18,7 @@ public class ColorDialog extends JDialog {
 
     private final JPanel contentPanel = new JPanel();
     private final ButtonGroup buttonGroup = new ButtonGroup();
-    private Color selectedColor;
+    private Color selectedColor = new Color(0, 0, 255);
 
     /**
      * Create the dialog.
