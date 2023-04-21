@@ -58,6 +58,7 @@ public class Ventana extends JFrame {
 		btnRed.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setForeground(Color.RED);
+				textField.setText("Rojo");
 			}
 		});
 		btnRed.setBounds(102, 265, 89, 23);
@@ -67,6 +68,7 @@ public class Ventana extends JFrame {
 		btnGreen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setForeground(Color.GREEN);
+				textField.setText("Verde");
 			}
 		});
 		btnGreen.setBounds(284, 265, 89, 23);
@@ -76,6 +78,7 @@ public class Ventana extends JFrame {
 		btnBlue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setForeground(Color.BLUE);
+				textField.setText("Azul");
 			}
 		});
 		btnBlue.setBounds(458, 265, 89, 23);
