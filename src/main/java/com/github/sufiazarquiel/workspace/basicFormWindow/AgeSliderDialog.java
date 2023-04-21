@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace.window;
+package com.github.sufiazarquiel.workspace.basicFormWindow;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -17,32 +17,21 @@ import javax.swing.event.ChangeEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class DialogoElegirEdad extends JDialog {
+/*
+ * Class that creates a dialog to select an age
+ */
+public class AgeSliderDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JSlider slider;
-	private JLabel lblValor;
-
-	/**
-	 * Launch the application.
-	 *
-	 * public static void main(String[] args) {
-	 * try {
-	 * DialogoElegirEdad dialog = new DialogoElegirEdad();
-	 * dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-	 * dialog.setVisible(true);
-	 * } catch (Exception e) {
-	 * e.printStackTrace();
-	 * }
-	 * }
-	 */
-
+	private JLabel lblValue;
+	
 	/**
 	 * Create the dialog.
 	 */
-	// el dialogo recibe quien es su padre en el constructor
-	public DialogoElegirEdad(JFrame padre) {
-		super(padre); // lanzo el constructor para que guarde el padre
+	// Dialog recieves the parent frame
+	public AgeSliderDialog(JFrame parent, boolean modal) {
+		super(parent, modal); // super() calls the constructor of the parent class
 		setTitle("Selecciona la edad");
 		setBounds(100, 100, 260, 238);
 		getContentPane().setLayout(new BorderLayout());
@@ -57,14 +46,14 @@ public class DialogoElegirEdad extends JDialog {
 		slider.setBounds(21, 104, 200, 26);
 		contentPanel.add(slider);
 
-		lblValor = new JLabel("0");
-		lblValor.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblValor.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblValor.setBounds(80, 35, 75, 37);
-		contentPanel.add(lblValor);
+		lblValue = new JLabel("0");
+		lblValue.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblValue.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblValue.setBounds(80, 35, 75, 37);
+		contentPanel.add(lblValue);
 		slider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
-				actualizarValor();
+				updateValue();
 			}
 		});
 
@@ -76,7 +65,7 @@ public class DialogoElegirEdad extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						pulsadoOK(padre);
+						okPressed();
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -87,7 +76,7 @@ public class DialogoElegirEdad extends JDialog {
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						pulsadoCancel();
+						cancelPressed();
 					}
 				});
 				cancelButton.setActionCommand("Cancel");
@@ -96,20 +85,22 @@ public class DialogoElegirEdad extends JDialog {
 		}
 	}
 
-	private void actualizarValor() {
-		this.lblValor.setText(String.valueOf(this.slider.getValue()));
+	private void updateValue() {
+		// Update the label with the value of the slider
+		this.lblValue.setText(String.valueOf(this.slider.getValue()));
 	}
 
-	private void pulsadoCancel() {
-		// this.setVisible(false);//oculta el dialogo pero no desaparece, sigue
-		// consumiendo recursos
-		this.dispose(); // esto elimina el dialogo
+	private void cancelPressed() {
+		// The following commented line only hides the dialog, but doesn't destroy it
+		// this.setVisible(false);
+		// Instead, do the following:
+		this.dispose();
 	}
 
-	private void pulsadoOK(JFrame padre) {
-		// pasar la edad a la ventana padre
-		((Formulario2) padre).textFieldEdad.setText(String.valueOf(this.slider.getValue()));
-		// cierro el dialogo
+	private void okPressed() {
+		// Change the parent's text field with the value of the slider
+		((Form) this.getParent()).getTextFieldAge().setText(String.valueOf(this.slider.getValue()));
+
 		this.dispose();
 	}
 }

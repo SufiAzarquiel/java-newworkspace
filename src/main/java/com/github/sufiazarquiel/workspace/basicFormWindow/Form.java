@@ -1,4 +1,4 @@
-package com.github.sufiazarquiel.workspace.window;
+package com.github.sufiazarquiel.workspace.basicFormWindow;
 
 import java.awt.EventQueue;
 
@@ -17,11 +17,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Formulario2 extends JFrame {
+public class Form extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textFieldNombre;
-	public JTextField textFieldEdad;
+	private JTextField textFieldName;
+	private JTextField textFieldAge;
 
 	/**
 	 * Launch the application.
@@ -31,7 +31,7 @@ public class Formulario2 extends JFrame {
 			public void run() {
 				try {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-					Formulario2 frame = new Formulario2();
+					Form frame = new Form();
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -44,7 +44,7 @@ public class Formulario2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Formulario2() {
+	public Form() {
 		setTitle("Formulario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -59,72 +59,73 @@ public class Formulario2 extends JFrame {
 		lblNewLabel.setBounds(47, 32, 72, 26);
 		contentPane.add(lblNewLabel);
 
-		JLabel lblEdad = new JLabel("Edad:");
-		lblEdad.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblEdad.setBounds(47, 81, 72, 26);
-		contentPane.add(lblEdad);
+		JLabel lblAge = new JLabel("Edad:");
+		lblAge.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblAge.setBounds(47, 81, 72, 26);
+		contentPane.add(lblAge);
 
-		textFieldNombre = new JTextField();
-		textFieldNombre.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		textFieldNombre.setBounds(129, 32, 253, 26);
-		contentPane.add(textFieldNombre);
-		textFieldNombre.setColumns(10);
+		textFieldName = new JTextField();
+		textFieldName.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textFieldName.setBounds(129, 32, 253, 26);
+		contentPane.add(textFieldName);
+		textFieldName.setColumns(10);
 
-		textFieldEdad = new JTextField();
-		textFieldEdad.setEditable(false);
-		textFieldEdad.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		textFieldEdad.setBounds(129, 81, 46, 26);
-		contentPane.add(textFieldEdad);
-		textFieldEdad.setColumns(10);
+		textFieldAge = new JTextField();
+		textFieldAge.setEditable(false);
+		textFieldAge.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textFieldAge.setBounds(129, 81, 46, 26);
+		contentPane.add(textFieldAge);
+		textFieldAge.setColumns(10);
 
-		JButton btnEnviar = new JButton("Enviar");
-		btnEnviar.addActionListener(new ActionListener() {
+		JButton btnSend = new JButton("Enviar");
+		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				enviar();
+				send();
 			}
 		});
-		btnEnviar.setBounds(172, 227, 89, 23);
-		contentPane.add(btnEnviar);
+		btnSend.setBounds(172, 227, 89, 23);
+		contentPane.add(btnSend);
 
-		JButton btnTresPuntos = new JButton("...");
-		btnTresPuntos.addActionListener(new ActionListener() {
+		JButton btnThreeDots = new JButton("...");
+		btnThreeDots.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				pulsadoTresPuntos();
+				threeDotsPressed();
 			}
 		});
-		btnTresPuntos.setBounds(188, 81, 32, 27);
-		contentPane.add(btnTresPuntos);
+		btnThreeDots.setBounds(188, 81, 32, 27);
+		contentPane.add(btnThreeDots);
 	}
 
-	private void enviar() {
+	public JTextField getTextFieldAge() {
+		return textFieldAge;
+	}
+
+	private void send() {
 		try {
-			if (textFieldNombre.getText().isBlank()) {
+			if (textFieldName.getText().isBlank()) {
 				JOptionPane.showMessageDialog(this, "Rellena el campo nombre", "Error", JOptionPane.WARNING_MESSAGE);
-			} else if (textFieldEdad.getText().isBlank()) {
+			} else if (textFieldAge.getText().isBlank()) {
 				JOptionPane.showMessageDialog(this, "Rellena el campo edad", "Error", JOptionPane.WARNING_MESSAGE);
-			} else if (Integer.parseInt(textFieldEdad.getText()) < 0
-					|| Integer.parseInt(textFieldEdad.getText()) > 120) {
-				JOptionPane.showMessageDialog(this, "Revisa la edad", "Edad un poco rara", JOptionPane.WARNING_MESSAGE);
 			} else {
 				JOptionPane.showMessageDialog(this, "Datos enviados", "Correcto", JOptionPane.PLAIN_MESSAGE);
-				// Si los datos son enviados, se puede cerrar la ventana
+				// If data is correct, close the window
 				this.dispose();
 			}
 		} catch (HeadlessException e) {
 			JOptionPane.showMessageDialog(this, "El dialogo se siente huerfano", "Error", JOptionPane.WARNING_MESSAGE);
-		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(this, "Revisa la edad", "Error", JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
-	private void pulsadoTresPuntos() {
+	protected void threeDotsPressed() {
+		// -------------------JOptionPane-------------------
 		// String resultado = JOptionPane.showInputDialog(this, "Teclea tu edad:" ,
 		// "Edad" , JOptionPane.PLAIN_MESSAGE);
-		// textFieldEdad.setText(resultado);
+		// textFieldAge.setText(resultado);
 
-		DialogoElegirEdad miDialogo = new DialogoElegirEdad(this);
-		miDialogo.setLocationRelativeTo(this); // que salga donde estemos
-		miDialogo.setVisible(true);
+		// -------------------DialogoElegirEdad-------------------
+		// Like a modal window but with a custom layout
+		AgeSliderDialog myDialog = new AgeSliderDialog(this, true);
+		myDialog.setLocationRelativeTo(this);
+		myDialog.setVisible(true);
 	}
-
 }
