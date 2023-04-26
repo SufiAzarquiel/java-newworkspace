@@ -1,5 +1,6 @@
 package com.github.sufiazarquiel.workspace.basicFormWindow;
 
+import java.awt.Desktop;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -15,6 +16,8 @@ import java.awt.HeadlessException;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Form extends JFrame {
@@ -107,12 +110,30 @@ public class Form extends JFrame {
 			} else if (textFieldAge.getText().isBlank()) {
 				JOptionPane.showMessageDialog(this, "Rellena el campo edad", "Error", JOptionPane.WARNING_MESSAGE);
 			} else {
-				JOptionPane.showMessageDialog(this, "Datos enviados", "Correcto", JOptionPane.PLAIN_MESSAGE);
+				sendDataToFormWriter();
 				// If data is correct, close the window
 				this.dispose();
 			}
 		} catch (HeadlessException e) {
 			JOptionPane.showMessageDialog(this, "El dialogo se siente huerfano", "Error", JOptionPane.WARNING_MESSAGE);
+		}
+	}
+
+	private void sendDataToFormWriter() {
+		// This is the path of the file at home, at work it its the one below
+		// String path = "C:\\Users\\sufia\\Desktop\\form.txt";
+		String path = "C:\\Users\\diurno\\Desktop\\form.txt";
+		ArrayList<String> data = new ArrayList<String>();
+		data.add(textFieldName.getText());
+		data.add(textFieldAge.getText());
+		FormWriter formWriter = new FormWriter(path);
+		formWriter.saveFormData(data);
+
+		// Open the file
+		try {
+			Desktop.getDesktop().open(new File(path));
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, "No se ha podido abrir el archivo", "Error", JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
